@@ -24,7 +24,7 @@ Show Varric the orders so the guards doubt him. Duel him by dodging the thrust, 
 
 On the balcony, ask what Mira wants for the valley. At the guardian, play Pip's whistle to break the chain peacefully, or survive the guardian's tactical duel. Restore the second seal with **Water → Leaf → Sun**. Both chain and seal objectives are required for the final confrontation.
 
-## Five endings
+## Seven endings
 
 | Ending | Requirement / decision |
 | --- | --- |
@@ -33,6 +33,8 @@ On the balcony, ask what Mira wants for the valley. At the guardian, play Pip's 
 | A heavier promise | Take the crown and responsibility. |
 | One honest morning | Keep the signed orders and expose Varric to restore the king. |
 | A smaller shore | During chapter six, open the pause menu and choose Leave with Mira, then confirm the story choice. |
+| The river has a voice | Complete the lock and copper archive, preserve the sealed dock evidence, free Wren and invite him to testify; retain the receipt and testimony, Rook trust at least 4. Propose a river charter. |
+| A light in every window | Repair the observatory and glass bird, forge the three bells, hear Iona and Mira honestly; Iona trust at least 4 and Mira at least 3. Share the ward among three keepers. |
 
 The ending gallery persists across New Journey. The ending recap lets you replay the current chapter from its checkpoint.
 
@@ -40,4 +42,19 @@ The ending gallery persists across New Journey. The ending recap lets you replay
 
 Travel uses one stamina. Rest is always available on a map: +4 stamina and +2 mana. Bread restores four stamina; tonic restores four mana; balm removes one wound. A wound reduces maximum stamina by one, up to three wounds. Losing a duel sends you to safety; rest and retry. No failure spends real money or requires an advertisement.
 
-Each chapter has one possible encounter with deterministic random timing. Helping a cart driver, sharing rainwater, trading with a merchant, mending a glass bird, speaking to a doubtful guard and sharing Mira's oranges have persistent inventory/resource/relationship effects. An autosave preserves the pending encounter and its next destination, so reloading never rerolls it.
+Each chapter has up to two distinct encounters with deterministic random timing. Helping a cart driver, sharing rainwater, trading with a merchant, mending a glass bird, speaking to a doubtful guard and sharing Mira's oranges have persistent inventory/resource/relationship effects. An autosave preserves the pending encounter and its next destination, so reloading never rerolls it.
+
+## Expansion side quests and camp
+
+1. **What she left behind:** examine all three clues at the forge and all three at the gate. Both inspections are required.
+2. **The broken sentinel:** at the forest shrine, repair its warning bell with wire, or win the optional sentinel duel. Kind repair earns more trust.
+3. **A working river:** at the river lock open the upper and lower gates, leave the middle gate shut. In the copper archive inspect all three records, preserve the receipt, then join the lantern festival.
+4. **Light for someone else:** at the observatory turn mirrors 1, 2 and 4 once from their starting positions. The final four mirror states are /, \, /, \. Repair the glass bird in the aviary as well.
+5. **A soldier’s choice:** inspect all three kitchen clues and free Wren from the cell. Let him testify. At the dock preserve the sealed evidence for the river-charter ending.
+6. **Three small promises:** after rescuing Mira, visit the bell forge in chapter six. Heat → Shape → Cool. A wrong order costs one stamina and resets the sequence; there is no timer.
+
+The tent button on any map opens camp. Gather once per chapter for two stamina, rest freely, trade two silver for supplies, or craft bread, balm, tonic and sun shards from listed ingredients. Each chapter has its own optional personal conversation. Resolved clues, crafting costs, gathering and conversations persist through autosave.
+
+A companion with at least two trust can help once per duel: Rook creates pressure and restores a step, Iona strengthens the guard and mana, Mira finds a weak link. A sun shard pays for one Sun Ward automatically before mana is used.
+
+Open Memories on the title screen or at camp to revisit unlocked artwork in full, read six world notes and track eight milestones. Discoveries survive a new journey.

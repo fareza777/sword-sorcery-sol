@@ -11,8 +11,11 @@
     "Pip": "aura-2-luna-en",
     "Tessa": "aura-2-helena-en",
     "Nell": "aura-2-andromeda-en",
-    "Oren": "aura-2-arcas-en"
+    "Oren": "aura-2-arcas-en",
+    "Wren": "aura-2-arcas-en",
+    "Cook": "aura-2-helena-en",
+    "Driver": "aura-2-arcas-en"
   },
-  "tracks": 160,
-  "characters": 11911
+  "tracks": 266,
+  "characters": 20325
 }

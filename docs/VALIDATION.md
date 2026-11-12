@@ -1,40 +1,43 @@
-# Validation · 12 November 2026
+# Validation · Sunward Oath 1.1.0
 
-## Automated game rules
+Validated on 12 November 2026. This update was tested in a browser and a dedicated emulator only. The player's physical phone was not accessed.
 
-`npm test`: **15 tests passed**. Tests cover complete routes to all five endings, all six side quests, graph reachability of all 81 story beats, all encounter choices, inventory consumption, anti-farming rules, resource boundaries, puzzle failure/recovery, tactical duel wins/losses, chapter prerequisites, strict save validation, and thirty deterministic seeded complete playthroughs.
+## Automated game rules and media
 
-## Rendered UI
+`npm test`: **38 tests passed**. Covers all seven endings, all twelve side quests, graph reachability of 131 beats, resources and recovery, encounter consequences, save validation and migration, investigation rewards, water-gate persistence and unsafe-route rejection, sixteen mirror configurations, forging, atomic crafting, once-per-chapter gathering, trading, trusted ally assists and sun shards. Thirty original and thirty expanded seeded journeys complete successfully.
 
-`npm run test:ui`: **486 layout checks passed**, with no browser script errors or missing images in the final run. Every story beat was inspected in English and Indonesian at 360×640 and 390×844 portrait sizes, including larger text. The test plays a complete six-chapter journey through the actual controls, finishes all side quests, resumes an autosave, inspects inventory/journal/bonds/settings, and selects all five endings. External requests are blocked in this browser test.
+Media checks require all planned art to be generated, every scene/page/encounter to use a completed WebP, all seven battle layers to contain genuine alpha transparency, all 266 VO tracks to exist, and all three original 64-second scores to be complete. Old SVG scene placeholders are removed.
 
-`node tests/voice.mjs`: the Listen button correctly selects conversation, duel-telegraph, and encounter tracks.
+## Rendered browser interface
 
-Machine-readable results: `dist/ui-test-report.json`.
+`npm run test:ui`: **786 layout checks passed**. Every story beat in English and Indonesian at 360×640 and 390×844, including larger text. A complete rendered six-chapter journey finishes all twelve quests, visits camp, gathers and crafts, solves the new interactions, chooses all seven endings, resumes a save, and uses inventory, journal, bonds, settings, memories, world notes and milestones. External requests are blocked in this test. No missing images, browser errors or out-of-screen controls.
 
-## Android
+`node tests/battle-ui.mjs`: **24 additional generated battle layouts passed**, covering four opponents across six screen/language/type variants. Verifies whole-image containment, active guard poses, ally controls and OS reduced motion. Combat controls remain visible throughout attack animations.
 
-The app was installed and launched on a physical Android 13 phone. Native WebView, local assets, bridge and phone-language detection were inspected. The revised APK uses the same local signing identity so it can update this installation without uninstalling its save.
+`node tests/voice.mjs`: **eight replay cases passed**: conversation, investigation clue, sentinel, mirror puzzle, forging, camp conversation, brambleback and encounter.
 
-A separate dedicated Android 15 / API 35 QA emulator was tested in **airplane mode, with Wi-Fi and mobile data disabled**. `node tests/native-offline.mjs` verified:
+Reports: `dist/ui-test-report.json` and `dist/battle-ui-report.json`.
 
-- Genuine playback of bundled `intro-0.mp3` (duration 3.744 seconds; playback position advanced).
-- Autosave survives force-stop and a cold application restart.
-- Indonesian text, bundled fonts and local native bridge load offline.
-- Both puzzle/duel mechanics and all five ending selections.
-- An unavailable rewarded ad returns a useful message; the free hint remains usable.
-- Ending discoveries persist across journeys.
+## Native Android offline
 
-Machine-readable results: `dist/android-test-report.json`. The QA emulator has separate data from the player's physical device.
+Dedicated Android 15 / API 35 QA emulator, airplane mode enabled, Wi-Fi and data disabled. `node tests/native-offline.mjs` passed:
 
-## APK and security
+- Actual bundled intro VO playback: 3.744-second file; playback advanced to 3.094 seconds.
+- Save restored after force-stop and a cold restart.
+- Indonesian text, bundled fonts and the native bridge load offline.
+- Rune puzzle, tactical duel, investigation, water gates, mirror routing, forging, gathering, crafting and trusted ally assistance.
+- All generated combat layers load with containment inside the native WebView.
+- All seven ending choices and persistent ending discoveries.
+- Unavailable rewarded ad produces a useful message; free hints remain usable.
 
-Android debug and release builds and release lint complete successfully. The installable local and separately signed release APKs disable WebView debugging. APK signature v2 verification passes. The APK contains all story, illustration, font, music and speech assets. Deepgram synthesis is a build-time operation; no Deepgram credential is included in app/source artifacts. Signing secrets live outside the workspace.
+The harness waits for the title/game screen rather than the splash. The emulator was shut down after testing. Report: `dist/android-test-report.json`. Native screenshots: `dist/android-offline-battle.png` and `dist/android-offline-ending.png`.
 
-The app uses the actual Google Mobile Ads SDK with Google's demo IDs. Native code limits interstitials to natural chapter breaks, every second chapter, at least 180 seconds apart, and at most two per session. Rewarded hints use the SDK earned-reward callback. Network ad delivery is separate from offline game completion; the automated offline test verifies graceful unavailability, not advertiser fill or production monetization.
+## APK integrity and limits
 
-## Visual review and scope
+Debug, local and protected-signing release builds pass. Release lint and both APK Signature Scheme v2 verifications pass. Version code 2, version name 1.1.0, minimum API 24, target API 35. Both distributed APKs disable debugging. `python tools/verify_artifacts.py` confirms both APKs contain the exact source assets: 66 generated images, 266 voice tracks and three scores. Report: `dist/artifact-report.json`.
 
-Painterly character scenes use the locked four-character model reference in `art/cast.webp`. Front, three-quarter, side and rear compositions vary naturally; human upper faces remain obscured and mouths can express emotion. Animals and monsters may show faces. The entire image is displayed without cropping. Scene continuity was checked: Mira is absent from the tower puzzle before her rescue, and the departure ending shows only the siblings and fox.
+Deepgram synthesis runs only at build time; no speech key or signing material is included. Ads retain the actual Google Mobile Ads SDK and demo IDs. Offline QA verifies graceful ad unavailability, not production ad fill. VO is English with full Indonesian text. The Rate entry explains that Google Play ratings open after store publication.
 
-This is a complete **short** independent graphic novel adventure. The Rate entry point explains that public Google Play ratings are available after store publication. VO is English, with complete Indonesian text; Deepgram Aura does not currently provide Indonesian TTS. Test ad units are intentionally retained.
+## Visual review
+
+All 66 generated assets were reviewed together and gameplay screenshots were inspected. Cast identity uses `art/cast.webp`; exact cast lists prevent Mira appearing before her rescue. The first camp uses the empty forge before Rook joins. Human upper faces are obscured, only mouths express emotion; animals and monsters can show their complete faces. Poses vary naturally. Entire images are displayed without cropping.

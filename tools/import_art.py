@@ -10,9 +10,11 @@ for key,filename in sources.items():
     target=art/(key+'.webp')
     if src.exists() and (not target.exists() or src.stat().st_mtime>target.stat().st_mtime):
         temporary=art/(key+'.webp.new')
-        with Image.open(src)as im:im.convert('RGB').save(temporary,'WEBP',quality=88,method=6)
+        with Image.open(src)as im:im.convert('RGBA' if 'A' in im.getbands() else 'RGB').save(temporary,'WEBP',quality=88,method=6)
         temporary.replace(target)
 manifest={p.stem:'art/'+p.name for p in art.glob('*.svg') if p.stem!='emblem'}
 manifest.update({p.stem:'art/'+p.name for p in art.glob('*.webp')})
-(art.parent/'art.mjs').write_text('export default '+json.dumps(manifest,indent=2)+';\n')
+manifest_tmp=art.parent/'art.mjs.new'
+manifest_tmp.write_text('export default '+json.dumps(manifest,indent=2)+';\n')
+manifest_tmp.replace(art.parent/'art.mjs')
 print('Imported complete images. Manifest:',len(manifest),'unique scenes.')

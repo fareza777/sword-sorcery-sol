@@ -5,13 +5,19 @@
   "offlineVoice": {
     "src": "https://appassets.androidplatform.net/audio/intro-0.mp3",
     "duration": 3.744,
-    "time": 0.305388
+    "time": 3.094117
   },
   "coldRestartSave": true,
   "puzzle": true,
   "duel": true,
   "optionalRewardedUnavailableHandled": true,
-  "endings": 5,
+  "endings": 7,
+  "investigation": true,
+  "waterGates": true,
+  "beamPuzzle": true,
+  "forging": true,
+  "crafting": true,
+  "ally": true,
   "info": {
     "width": 393,
     "height": 778,
@@ -23,7 +29,9 @@
       "free",
       "crown",
       "king",
-      "home"
+      "home",
+      "river",
+      "beacon"
     ]
   }
 }

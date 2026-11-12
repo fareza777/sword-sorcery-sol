@@ -1,5 +1,5 @@
 {
-  "checks": 486,
+  "checks": 786,
   "variants": [
     {
       "w": 360,
@@ -40,7 +40,7 @@
   ],
   "failures": [],
   "errors": [],
-  "renderedEndings": 5,
-  "sideQuests": 6,
+  "renderedEndings": 7,
+  "sideQuests": 12,
   "externalRequestsAllowed": false
 }

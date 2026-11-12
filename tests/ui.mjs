@@ -1,5 +1,5 @@
 import {chromium} from 'playwright';import assert from 'node:assert/strict';import fs from 'node:fs/promises';
-import {NODES,ITEMS,EVENTS} from '../app/src/main/assets/story.mjs';import * as E from '../app/src/main/assets/engine.mjs';
+import {NODES,ITEMS,EVENTS,QUESTS} from '../app/src/main/assets/story.mjs';import * as E from '../app/src/main/assets/engine.mjs';
 const browser=await chromium.launch({channel:'chrome',headless:true});const errors=[];const failures=[];let checks=0;
 const ctx=await browser.newContext({viewport:{width:390,height:844},deviceScaleFactor:1});
 await ctx.route('**/*',route=>new URL(route.request().url()).hostname==='127.0.0.1'?route.continue():route.abort());
@@ -12,22 +12,35 @@ async function current(){return p.evaluate(async()=> (await import('/app.mjs')).
 let fast=false;
 async function press(action,extra=''){const selector=`[data-action="${action}"]${extra}`;const inSheet=p.locator('#overlay '+selector);const el=(await inSheet.count()?inSheet:p.locator(selector)).first();if(fast)await el.dispatchEvent('click');else await el.click();}
 async function pages(){while(await p.locator('[data-action="next"]').count())await press('next');}
-async function pick(to){await pages();const s=await current(),index=NODES[s.id].choices.findIndex(c=>c.to===to);assert.ok(index>=0,s.id+' → '+to);if(!await p.locator(`[data-action="choose"][data-index="${index}"]`).count())await press(index>=2?'choice-more':'choice-previous');await press('choose',`[data-index="${index}"]`);assert.equal((await current()).id,to);}
+async function pick(to){await pages();const s=await current(),index=NODES[s.id].choices.findIndex(c=>c.to===to);assert.ok(index>=0,s.id+' → '+to);for(let i=0;i<4&&!await p.locator(`[data-action="choose"][data-index="${index}"]`).count();i++)await press('choice-more');await press('choose',`[data-index="${index}"]`);assert.equal((await current()).id,to);}
 async function visit(to){let s=await current();while(s.stamina<E.maxStamina(s)||s.mana<10){await press('rest');s=await current()}const i=NODES[s.id].locations.findIndex(c=>c.to===to);assert.ok(i>=0);await press('travel',`[data-index="${i}"]`);s=await current();if(s.event){const j=EVENTS[s.event.index].choices.findIndex(c=>!E.reason(s,c.need));await press('event',`[data-index="${j}"]`)}assert.equal((await current()).id,to);}
 async function fight(){for(let i=0;i<6;i++){const s=await current();if(!s.duel)break;const tell=E.telegraph(s)[0],move=tell==='sweep'?'guard':tell==='rush'?'dodge':'strike';await press('duel',`[data-move="${move}"]`)}assert.ok(!(await current()).duel)}
 async function nextChapter(){await press('advance');await press('begin-chapter');}
-// Actual end-to-end journey through the rendered controls, including all six side quests.
-await pick('forge_intro');await pick('village_map');await visit('market');await pick('market_truth');await pick('village_map');await visit('forge');await pick('forge_found');await pick('village_map');await visit('market');await pick('medicine_done');await pick('village_map');await visit('gate');await pick('badge');await pick('village_map');await visit('gate');await pick('gate_promise');await pick('village_map');await nextChapter();
-await pick('rook_meet');await pick('forest_map');await visit('fox');await pick('fox_free');await pick('forest_map');await visit('bridge');await pick('bridge_duel');await fight();await pick('bridge_kind');await pick('forest_map');await visit('ferry');await pick('ferry_pass');await pick('forest_map');await nextChapter();
-await pick('goblin_table');await pick('goblin_map');await p.screenshot({path:'dist/03-goblin-map.png'});await visit('council');await pick('council_yes');await pick('goblin_map');await visit('waterwheel');await pick('bell_found');await pick('goblin_map');await visit('child');await pick('child_done');await pick('goblin_map');await visit('memorial');await pick('names_done');await pick('goblin_map');await nextChapter();
-await pick('iona_truth');await pick('tower_map');await visit('apprentice');await pick('apprentice_done');await pick('tower_map');await visit('study');await pick('letter_found');await pick('letter_honest');await pick('tower_map');await visit('rune_intro');await pick('rune_puzzle');for(const k of ['leaf','water','sun'])await press('rune',`[data-rune="${k}"]`);await pick('tower_map');await nextChapter();
-await pick('castle_map');await visit('guard');await pick('varric_exposed');await pick('captain_duel');await p.screenshot({path:'dist/04-duel.png'});await fight();await pick('captain_aftermath');await pick('castle_map');await visit('gardener');await pick('garden_done');await pick('castle_map');await visit('workshop');await pick('mira_free');await pages();await press('choose','[data-index="1"]');await pick('castle_map');await nextChapter();
-await pick('crown_map');await visit('balcony');await pick('mira_future');await pick('crown_map');await visit('guardian');await pick('guardian_song');await pick('crown_map');await visit('seal_intro');await pick('seal_puzzle');for(const k of ['water','leaf','sun'])await press('rune',`[data-rune="${k}"]`);await pick('crown_map');await press('advance');
+
+async function inspect(){for(let i=0;i<3;i++)await press('inspect-point',`[data-index="${i}"]`);await press('listen');await press('inspect-finish');}
+async function extra(ch){const hub=['village_map','forest_map','goblin_map','tower_map','castle_map','crown_map'][ch];
+ if(ch===0){await visit('forge');await pick('forge_search');await inspect();await pick(hub);await visit('gate');await pick('gate_search');await inspect();await pick(hub);await press('camp');await press('camp-forage');await press('crafting');await press('craft-recipe','[data-recipe="bread"]');await press('close');}
+ if(ch===1){await visit('cart_start');await pick('cart_saved');await pick(hub);await visit('spring');await pick('spring_done');await pick(hub);await visit('shrine');await pick('sentinel_repair');await pick(hub);}
+ if(ch===2){await visit('lock_start');await pick('lock_puzzle');await press('gate-toggle','[data-index="0"]');await press('gate-toggle','[data-index="2"]');await press('gate-finish');await pick(hub);await visit('archive');await pick('archive_search');await inspect();await pick('festival');await pick('festival_promise');await pick(hub);}
+ if(ch===3){await visit('observatory');await pick('mirror_puzzle');for(const i of [0,1,3])await press('mirror-turn',`[data-index="${i}"]`);await press('mirror-finish');await pick(hub);await visit('aviary');await pick('bird_done');await pick(hub);}
+ if(ch===4){await visit('kitchen');await pick('kitchen_search');await inspect();await pick(hub);await visit('prison');await pick('wren_free');await pick(hub);await visit('dock');await pick('dock_done');await pick(hub);}
+ if(ch===5){await visit('bells_start');await pick('bells_puzzle');for(const k of ['heat','hammer','cool'])await press('forge-step',`[data-step="${k}"]`);await pick(hub);}
+ await press('camp');await press('camp-talk');await pick('camp_after_'+ch);await pick(hub);
+}
+
+// Actual end-to-end journey through the rendered controls, including all twelve side quests.
+await pick('forge_intro');await pick('village_map');await visit('market');await pick('market_truth');await pick('village_map');await visit('forge');await pick('forge_found');await pick('village_map');await visit('market');await pick('medicine_done');await pick('village_map');await visit('gate');await pick('badge');await pick('village_map');await visit('gate');await pick('gate_promise');await pick('village_map');await extra(0);await nextChapter();
+await pick('rook_meet');await pick('forest_map');await visit('fox');await pick('fox_free');await pick('forest_map');await visit('bridge');await pick('bridge_duel');await fight();await pick('bridge_kind');await pick('forest_map');await visit('ferry');await pick('ferry_pass');await pick('forest_map');await extra(1);await nextChapter();
+await pick('goblin_table');await pick('goblin_map');await p.screenshot({path:'dist/03-goblin-map.png'});await visit('council');await pick('council_yes');await pick('goblin_map');await visit('waterwheel');await pick('bell_found');await pick('goblin_map');await visit('child');await pick('child_done');await pick('goblin_map');await visit('memorial');await pick('names_done');await pick('goblin_map');await extra(2);await nextChapter();
+await pick('iona_truth');await pick('tower_map');await visit('apprentice');await pick('apprentice_done');await pick('tower_map');await visit('study');await pick('letter_found');await pick('letter_honest');await pick('tower_map');await visit('rune_intro');await pick('rune_puzzle');for(const k of ['leaf','water','sun'])await press('rune',`[data-rune="${k}"]`);await pick('tower_map');await extra(3);await nextChapter();
+await pick('castle_map');await visit('guard');await pick('varric_exposed');await pick('captain_duel');await p.screenshot({path:'dist/04-duel.png'});await fight();await pick('captain_aftermath');await pick('castle_map');await visit('gardener');await pick('garden_done');await pick('castle_map');await visit('workshop');await pick('mira_free');await pages();await press('choose','[data-index="1"]');await pick('castle_map');await extra(4);await nextChapter();
+await pick('crown_map');await visit('balcony');await pick('mira_future');await pick('crown_map');await visit('guardian');await pick('guardian_song');await pick('crown_map');await visit('seal_intro');await pick('seal_puzzle');for(const k of ['water','leaf','sun'])await press('rune',`[data-rune="${k}"]`);await pick('crown_map');await extra(5);await press('advance');
 const finalState=await current();await pick('ending_council');await pages();assert.equal((await current()).ending,'council');await p.screenshot({path:'dist/05-ending.png'});
 // Resume is byte-for-byte accurate for narrative location and resources.
 const saved=await current();await p.reload();await press('continue');const resumed=await current();for(const k of ['id','page','stamina','mana','wounds'])assert.equal(resumed[k],saved[k]);
-await press('inventory');assert.ok(await p.locator('.inventory-item').count());await press('close');await press('relations');await press('close');await press('journal');assert.equal(await p.locator('.quest.done').count(),6);await press('close');
-console.log('Rendered journey: all chapters, six side quests, council ending, resume, inventory, journal, and bonds passed.');
+await press('inventory');assert.ok(await p.locator('.inventory-item').count());await press('close');await press('relations');await press('close');await press('journal');assert.equal(await p.locator('.quest.done').count(),12);await press('close');
+await press('pause');await press('home');await press('collections');assert.ok(await p.locator('.memory-card:not([disabled])').count()>20);await p.locator('[data-action="memory-open"]:not([disabled])').first().click();assert.equal(await p.locator('.full-memory img').evaluate(e=>getComputedStyle(e).objectFit),'contain');await press('close');await press('collections');await press('collection-tab','[data-tab="codex"]');assert.equal(await p.locator('.codex-entry').count(),6);await press('collection-tab','[data-tab="awards"]');assert.equal(await p.locator('.award').count(),8);await press('close');await press('continue');
+console.log('Rendered journey: all chapters, twelve side quests, council ending, resume, inventory, journal, and bonds passed.');
 // Inspect every story beat in both languages, small/normal screens, and normal/larger text.
 const variants=[
  {w:360,h:640,lang:'en',large:false},{w:360,h:640,lang:'id',large:false},
@@ -56,14 +69,14 @@ for(const v of variants){
  await fs.writeFile('dist/ui-test-report.json',JSON.stringify({checks,variants,failures,errors,stage:'layout'},null,2));
 }
 fast=false;
-// Locked council option still fits; all five endings can be selected through real UI.
+// Locked council option still fits; all seven endings can be selected through real UI.
 await p.setViewportSize({width:390,height:844});
-for(const ending of ['free','crown','king','home']){
+for(const ending of ['free','crown','king','home','river','beacon']){
  const s=structuredClone(finalState);if(ending==='home')E.go(s,'retreat');
  await press('pause');await press('home');await p.evaluate(s=>localStorage.setItem('sunward.save.v1',s),E.serialize(s));await press('continue');await pick('ending_'+ending);await pages();assert.equal((await current()).ending,ending);
 }
 // System language and localized settings are exercised through the UI.
 await press('pause');await press('settings');await p.locator('#language').selectOption('id');assert.equal(await p.locator('.sheet h2').innerText(),'Atur sesukamu');await p.locator('#language').selectOption('system');assert.equal(await p.evaluate(()=>document.documentElement.lang),'en');await press('close');
 assert.deepEqual(errors,[],'browser errors');
-await fs.writeFile('dist/ui-test-report.json',JSON.stringify({checks,variants,failures,errors,renderedEndings:5,sideQuests:6,externalRequestsAllowed:false},null,2));
-await browser.close();assert.deepEqual(failures,[],'layout failures; see dist/ui-test-report.json');console.log(`PASS: ${checks} layout checks; five endings; no browser errors.`);
+await fs.writeFile('dist/ui-test-report.json',JSON.stringify({checks,variants,failures,errors,renderedEndings:7,sideQuests:12,externalRequestsAllowed:false},null,2));
+await browser.close();assert.deepEqual(failures,[],'layout failures; see dist/ui-test-report.json');console.log(`PASS: ${checks} layout checks; seven endings; no browser errors.`);

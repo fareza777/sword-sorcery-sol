@@ -1,17 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import {NODES,CHAPTERS,ITEMS,EVENTS,QUESTS} from '../app/src/main/assets/story.mjs';import ART from '../app/src/main/assets/art.mjs';import * as E from '../app/src/main/assets/engine.mjs';
-export const pages=s=>{while(E.nextPage(s));};
-export function pick(s,to){pages(s);const i=NODES[s.id].choices.findIndex(c=>c.to===to);assert.ok(i>=0,`No choice ${s.id} → ${to}`);E.choose(s,i);assert.ok(E.restore(E.serialize(s)),'save should round trip '+s.id);}
-export function visit(s,to){assert.equal(NODES[s.id].kind,'map');while(s.stamina<E.maxStamina(s)||s.mana<10)E.rest(s);const i=NODES[s.id].locations.findIndex(c=>c.to===to);assert.ok(i>=0);E.travel(s,i);if(s.event){const ev=EVENTS[s.event.index];E.eventChoice(s,ev.choices.findIndex(c=>!E.reason(s,c.need)));}}
-export const fight=s=>{for(const move of ['guard','dodge','strike','ward','guard','guard']){if(NODES[s.id].kind!=='duel')break;E.duelMove(s,move)}assert.notEqual(NODES[s.id].kind,'duel');};
-export function walkthrough(seed=17){
- const s=E.fresh(seed);E.go(s,'intro');pick(s,'forge_intro');pick(s,'village_map');
- visit(s,'market');pick(s,'market_truth');pick(s,'village_map');visit(s,'forge');pick(s,'forge_found');pick(s,'village_map');visit(s,'market');pick(s,'medicine_done');pick(s,'village_map');visit(s,'gate');pick(s,'badge');pick(s,'village_map');visit(s,'gate');pick(s,'gate_promise');pick(s,'village_map');E.advance(s);
- pick(s,'rook_meet');pick(s,'forest_map');visit(s,'fox');pick(s,'fox_free');pick(s,'forest_map');visit(s,'bridge');pick(s,'bridge_duel');fight(s);pick(s,'bridge_kind');pick(s,'forest_map');visit(s,'ferry');pick(s,'ferry_pass');pick(s,'forest_map');E.advance(s);
- pick(s,'goblin_table');pick(s,'goblin_map');visit(s,'council');pick(s,'council_yes');pick(s,'goblin_map');visit(s,'waterwheel');pick(s,'bell_found');pick(s,'goblin_map');visit(s,'child');pick(s,'child_done');pick(s,'goblin_map');visit(s,'memorial');pick(s,'names_done');pick(s,'goblin_map');E.advance(s);
- pick(s,'iona_truth');pick(s,'tower_map');visit(s,'apprentice');pick(s,'apprentice_done');pick(s,'tower_map');visit(s,'study');pick(s,'letter_found');pick(s,'letter_honest');pick(s,'tower_map');visit(s,'rune_intro');pick(s,'rune_puzzle');for(const r of ['leaf','water','sun'])E.rune(s,r);pick(s,'tower_map');E.advance(s);
- pick(s,'castle_map');visit(s,'guard');pick(s,'varric_exposed');pick(s,'captain_duel');fight(s);pick(s,'captain_aftermath');pick(s,'castle_map');visit(s,'gardener');pick(s,'garden_done');pick(s,'castle_map');visit(s,'workshop');pick(s,'mira_free');pages(s);E.choose(s,1);pick(s,'castle_map');E.advance(s);
- pick(s,'crown_map');visit(s,'balcony');pick(s,'mira_future');pick(s,'crown_map');visit(s,'guardian');pick(s,'guardian_song');pick(s,'crown_map');visit(s,'seal_intro');pick(s,'seal_puzzle');for(const r of ['water','leaf','sun'])E.rune(s,r);pick(s,'crown_map');return s;
-}
+import {VOICE_JOBS} from '../tools/voice-jobs.mjs';
+import {pages,pick,visit,fight,walkthrough} from './playthrough.mjs';
+
 test('all story destinations, localization pairs, item references, and art are valid',()=>{
  for(const n of Object.values(NODES)){
   assert.ok(CHAPTERS[n.ch]);assert.ok(ART[n.art],n.art);assert.ok(n.lines.length);
@@ -20,16 +10,16 @@ test('all story destinations, localization pairs, item references, and art are v
   for(const k of [n.win,n.lose])if(k)assert.ok(NODES[k]);
  }
  for(const file of Object.values(ART))assert.ok(fs.existsSync('app/src/main/assets/'+file),file);
- const audio=JSON.parse(fs.readFileSync('app/src/main/assets/audio/manifest.json'));assert.equal(Object.keys(audio).length,160);
+ const audio=JSON.parse(fs.readFileSync('app/src/main/assets/audio/manifest.json'));assert.equal(Object.keys(audio).length,VOICE_JOBS.length);for(const j of VOICE_JOBS)assert.ok(audio[j.key],j.key);
  for(const file of Object.values(audio))assert.ok(fs.statSync('app/src/main/assets/'+file).size>300,file);
 });
 for(const ending of ['council','free','crown','king','home'])test('complete six chapters and reach ending: '+ending,()=>{
- const s=walkthrough();assert.ok(QUESTS.every(q=>E.has(s,q.done)),'all side quests complete');
+ const s=walkthrough();assert.ok(QUESTS.filter(q=>!q.expansion).every(q=>E.has(s,q.done)),'all original side quests complete');
  if(ending==='home'){E.go(s,'retreat');pick(s,'ending_home');}else{E.advance(s);pick(s,'ending_'+ending)}
  assert.equal(s.ending,ending);assert.equal(NODES[s.id].kind,'ending');assert.ok(E.restore(E.serialize(s)));
 });
 test('all optional branches are reachable in the static story graph',()=>{
- const seen=new Set();const walk=id=>{if(seen.has(id))return;seen.add(id);const n=NODES[id];for(const c of [...n.choices,...n.locations||[]])walk(c.to);for(const k of [n.win,n.lose])if(k)walk(k);if(n.kind==='map')walk(CHAPTERS[n.ch].exit);};walk('intro');walk('retreat');assert.equal(seen.size,Object.keys(NODES).length,[...Object.keys(NODES)].filter(k=>!seen.has(k)).join(','));
+ const seen=new Set();const walk=id=>{if(seen.has(id))return;seen.add(id);const n=NODES[id];for(const c of [...n.choices,...n.locations||[]])walk(c.to);for(const k of [n.win,n.lose])if(k)walk(k);if(n.kind==='map'){walk(CHAPTERS[n.ch].exit);walk('camp_talk_'+n.ch)}};walk('intro');walk('retreat');assert.equal(seen.size,Object.keys(NODES).length,[...Object.keys(NODES)].filter(k=>!seen.has(k)).join(','));
 });
 test('no farming relations or supplies by repeating a completed choice',()=>{
  const s=E.fresh();E.go(s,'forge');pages(s);E.choose(s,0);const count=s.inventory.balm;E.go(s,'forge');pages(s);assert.equal(E.available(s,0),'done');assert.throws(()=>E.choose(s,0));assert.equal(s.inventory.balm,count);

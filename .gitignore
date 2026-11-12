@@ -16,3 +16,5 @@ dist/layout-failure-*.png
 dist/android-initial.png
 tmp/
 *.log
+
+__pycache__/

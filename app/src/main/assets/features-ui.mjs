@@ -1,0 +1,87 @@
+import {NODES,CHAPTERS,ITEMS,RECIPES,CODEX,ACHIEVEMENTS} from './story.mjs';
+import * as E from './engine.mjs';import ART from './art.mjs';
+const TITLES={ending_river:['The river has a voice','Sungai punya suara'],ending_beacon:['A light in every window','Cahaya di setiap jendela'],forge:['The quiet forge','Bengkel yang hening'],forge_clues:['What Mira left','Yang ditinggalkan Mira'],wagon_tracks:['A trail in the grass','Jejak di rerumputan'],market:['Briarwick market','Pasar Briarwick'],gate:['The eastern road','Jalan timur'],forest:['The green road','Jalan hijau'],grove:['A small kindness','Kebaikan kecil'],bridge:['The old bridge','Jembatan tua'],ferry:['Across the river','Menyeberangi sungai'],goblin:['Tinkermere','Tinkermere'],table:['A shared table','Meja bersama'],council:['Three keepers','Tiga penjaga'],waterwheel:['Copper and current','Tembaga dan arus'],reeds:['A tune to come home to','Nada untuk pulang'],memorial:['Names on copper','Nama pada tembaga'],study:['An honest record','Catatan yang jujur'],tower:['Sunspire','Sunspire'],runes:['A garden of symbols','Taman lambang'],stairs:['A hidden way','Jalan tersembunyi'],lantern:['A steady light','Cahaya yang tenang'],castle:['Highgarden Keep','Benteng Highgarden'],garden:['The orange garden','Kebun jeruk'],workshop:['Found at last','Akhirnya ditemukan'],guard:['The old teacher','Guru yang lama'],crown:['The Sun Chamber','Ruang Surya'],guardian:['A broken chain','Rantai yang putus'],seal:['A promise restored','Janji yang dipulihkan'],balcony:['What she chooses','Pilihannya sendiri'],throne:['What a crown is worth','Harga sebuah mahkota'],ending_council:['A table with room','Meja untuk semua'],ending_free:['The open sky','Langit terbuka'],ending_crown:['A heavier promise','Janji yang lebih berat'],ending_home:['A smaller shore','Pantai yang lebih kecil'],ending_king:['The river has a voice','Sungai punya suara'],camp:['A moment to breathe','Waktu untuk bernapas'],herbal_spring:['Clear spring water','Air mata yang jernih'],ruin_gate:['The root bridge','Jembatan akar'],ruin_sentinel:['A bell that would not ring','Lonceng yang tak berbunyi'],river_lock:['A working river','Sungai yang berfungsi'],copper_archive:['A promise in copper','Janji dalam tembaga'],clan_festival:['Lights on the river','Cahaya di sungai'],sun_observatory:['Light for someone else','Cahaya untuk orang lain'],star_chart:['A road of light','Jalan cahaya'],glass_aviary:['An open window','Jendela terbuka'],royal_kitchen:['Those who keep count','Mereka yang menghitung'],prison_cell:['A soldier’s choice','Pilihan seorang prajurit'],smuggler_dock:['Tools that feed a family','Alat yang menghidupi keluarga'],storm_bridge:['Holding the road','Menjaga jalan'],garden_meeting:['Someone will speak','Seseorang akan bersaksi'],trial_square:['The truth aloud','Kebenaran yang disuarakan'],shared_breakfast:['An ordinary morning','Pagi yang biasa'],bell_forging:['Three small promises','Tiga janji kecil'],cover_portrait:['The sunward road','Jalan menuju fajar'],village:['Briarwick','Briarwick']};
+const stored=(key)=>{try{const v=JSON.parse(localStorage.getItem(key));return Array.isArray(v)?v:[]}catch{return []}};
+export function createFeatures(ui){
+ const {L,tr,escape:esc,ico,img,button,head,meta,nav,panel,sheet,toast}=ui;
+ let activeClue=null,tab='memories';const state=()=>ui.getState();const prefs=()=>ui.getPrefs();
+ const title=id=>tr(TITLES[id]||[id.replaceAll('_',' '),id.replaceAll('_',' ')]);
+ const sceneIds=[...new Set(['cover_portrait',...Object.values(NODES).flatMap(n=>[n.art,...n.artPages||[]])])];
+ function remember(s){try{
+  for(const[key,values]of [['sunward.memories',s.artSeen||[]],['sunward.awards',E.achievements(s).map(a=>a.id)],['sunward.codex',CODEX.filter(c=>E.has(s,c.flag)).map(c=>c.id)]]){
+   const previous=stored(key),merged=[...new Set([...previous,...values])];if(merged.length!==previous.length)localStorage.setItem(key,JSON.stringify(merged));
+  }
+ }catch{}}
+ function clueVoice(s){return activeClue?.scene===s?.id?`inspect-${s.id}-${activeClue.id}`:null;}
+ function mountBattle(){
+  const s=state(),n=s?NODES[s.id]:null;if(n?.kind!=='duel'||s.event)return;
+  const enemy='enemy_'+n.enemy,needed=['battle_arena','rowan_idle','rowan_strike','rowan_ward',enemy];if(!needed.every(id=>ART[id]))return;
+  const frame=document.querySelector('#app .art-frame');if(!frame)return;
+  frame.innerHTML=`${img('battle_arena')}<div class="battle-stage" aria-hidden="true">${img('rowan_idle','battle-actor hero-idle')}${img('rowan_strike','battle-actor hero-strike')}${img('rowan_ward','battle-actor hero-ward')}${img(enemy,'battle-actor battle-enemy')}</div>`;
+ }
+ function wrap(n,body,customArt){return `<div class="screen interaction-screen ${n.kind}-screen">${head()}<div class="art-frame">${img(customArt||n.art)}</div>${meta()}${body}${nav()}</div>`;}
+ function instructions(n,text){return `<section class="dialogue"><span class="speaker">${ico(n.kind==='forge'?'sword':'sun')}${esc(n.speaker)}</span><p>${esc(text||tr(n.lines[0]))}</p></section>`;}
+ const leave=n=>`<button class="text-btn" data-action="return-map">${ico('back')}${L('Return to the map','Kembali ke peta')}</button>`;
+ function render(n){const s=state();
+  if(n.kind==='inspect'){
+   const found=s.investigations?.[n.id]||[],selected=activeClue?.scene===n.id?n.hotspots.find(h=>h.id===activeClue.id):null;
+   return wrap(n,`${instructions(n,selected?tr(selected.text):tr(n.lines[0]))}<div class="clue-buttons">${n.hotspots.map((h,i)=>`<button class="clue-button ${found.includes(h.id)?'found':''}" data-action="inspect-point" data-index="${i}">${ico(found.includes(h.id)?'check':'book')}<span>${esc(tr(h.label))}</span></button>`).join('')}</div><div class="interaction-footer"><span>${found.length}/${n.hotspots.length} ${L('clues examined','petunjuk diperiksa')}</span>${leave(n)}</div>${button('inspect-finish',L('Put the clues together','Rangkai petunjuknya'),'primary','arrow',found.length===n.hotspots.length?'':'disabled')}`);
+  }
+  if(n.kind==='mechanism'){
+   const gates=s.mechanisms?.[n.id]||[false,false,false],solved=gates.every((v,i)=>v===n.goal[i]);
+   return wrap(n,`${instructions(n)}<div class="gate-controls">${gates.map((open,i)=>`<button class="gate-switch ${open?'on':''}" data-action="gate-toggle" data-index="${i}"><span>${[L('Upper gate','Pintu atas'),L('Middle gate','Pintu tengah'),L('Lower gate','Pintu bawah')][i]}</span><span class="gate-water" aria-hidden="true"></span><span>${open?L('Open','Terbuka'):L('Closed','Tertutup')}</span></button>`).join('')}</div><div class="puzzle-controls">${button('gate-finish',solved?L('Let the boats through','Biarkan perahu lewat'):L('Guide the water','Arahkan air'),'primary','water',solved?'':'disabled')}<button class="text-btn" data-action="hint" aria-label="${L('Hint','Petunjuk')}">${ico('sun')}</button></div><div class="interaction-footer">${leave(n)}<span>${L('Tap a gate to change it','Sentuh pintu untuk mengubahnya')}</span></div>`);
+  }
+  if(n.kind==='beam'){
+   const mirrors=s.beams?.[n.id]||[1,0,0,0],trace=E.beamPath(mirrors),lit=trace.path.map(p=>p.row*3+p.col);
+   const points=['0,93',...trace.path.map(p=>(p.col*78+53)+','+(p.row*58+35)),...(trace.solved?['262,93']:[])].join(' ');
+   return wrap(n,`${instructions(n)}<div class="beam-board"><div class="mirror-grid">${Array.from({length:6},(_,cell)=>{const i=E.MIRROR_CELLS.indexOf(cell),classes=`mirror-cell ${i<0?'fixed':'reflector'} ${lit.includes(cell)?'lit':''}`;return i<0?`<span class="${classes}" aria-hidden="true">·</span>`:`<button class="${classes}" data-action="mirror-turn" data-index="${i}" aria-label="${L('Turn mirror','Putar cermin')} ${i+1}">${mirrors[i]===0?'/':'\\'}</button>`}).join('')}</div><svg class="beam-lines" width="262" height="130" viewBox="0 0 262 130" aria-hidden="true"><polyline points="${points}"/></svg><span class="beam-exit ${trace.solved?'solved':''}" aria-label="${L('Exit','Keluar')}">✦</span></div><div class="puzzle-controls">${button('mirror-finish',trace.solved?L('Keep the light shining','Jaga cahayanya menyala'):L('Find a way through','Temukan jalan cahaya'),'primary','sun',trace.solved?'':'disabled')}<button class="text-btn" data-action="hint" aria-label="${L('Hint','Petunjuk')}">${ico('sun')}</button></div><div class="interaction-footer">${leave(n)}<span>${L('Tap to turn a mirror','Sentuh untuk memutar cermin')}</span></div>`);
+  }
+  if(n.kind==='forge'){
+   const symbols={heat:'sun',hammer:'sword',cool:'drop'};
+   return wrap(n,`${instructions(n)}<div class="sequence">${[0,1,2].map(i=>`<span>${s.puzzle[i]?ico(symbols[s.puzzle[i]]):'·'}</span>`).join('')}</div><div class="rune-row craft-sequence">${[['heat',L('Heat','Panaskan')],['hammer',L('Shape','Tempa')],['cool',L('Cool','Dinginkan')]].map(([key,label])=>`<button class="rune-btn" data-action="forge-step" data-step="${key}">${ico(symbols[key])}${label}</button>`).join('')}</div><div class="row spread">${leave(n)}<button class="text-btn" data-action="hint">${ico('sun')}${L('Guidance','Petunjuk')}</button></div>`);
+  }
+  return null;
+ }
+ function camp(){const s=state();if(!s||NODES[s.id].kind!=='map'||s.event){toast(L('Find a safe place on the map first.','Cari tempat aman di peta dahulu.'));return}
+  const gathered=E.has(s,'forage_'+s.chapter),talked=E.has(s,'camp_talk_'+s.chapter);
+  sheet(L('A safe place to rest','Tempat aman untuk beristirahat'),`<div class="camp-illustration">${img(s.chapter===0?'forge':'camp')}</div><div class="camp-resources"><span>${L('Stamina','Stamina')} ${s.stamina}/${E.maxStamina(s)}</span><span>${L('Mana','Mana')} ${s.mana}/10</span><span>${s.inventory.silver||0} ${L('silver','perak')}</span></div><div class="camp-actions">${button('camp-rest',L('Rest · +4 / +2','Istirahat · +4 / +2'),'primary','tent')}${button('crafting',L('Make supplies','Racik bekal'),'secondary','leaf')}${button('camp-forage',gathered?L('Gathered today','Sudah dikumpulkan'):L('Gather · 2 stamina','Cari bahan · 2 stamina'),'secondary','leaf',gathered||s.stamina<2?'disabled':'')}${button('camp-talk',talked?L('Talk again','Bicara lagi'):L('Share a quiet moment','Nikmati waktu bersama'),'secondary','people')}${button('camp-shop',L('Trade at camp','Berdagang di kemah'),'secondary','bag')}${button('collections',L('Memories & discoveries','Kenangan & penemuan'),'secondary','book')}</div><p class="muted small">${L('Gather once per chapter. Rest whenever you need to. No timer, no tickets.','Kumpulkan bahan sekali tiap bab. Istirahat kapan pun dibutuhkan. Tanpa batas waktu atau tiket.')}</p>`,'camp');
+ }
+ function crafting(){const s=state(),safe=s&&NODES[s.id].kind==='map'&&!s.event;
+  sheet(L('Made for the road','Diracik untuk perjalanan'),`<p class="muted">${safe?L('Use the supplies you have gathered.','Gunakan bahan yang sudah kau kumpulkan.'):L('Make supplies from a safe camp on the map.','Racik perbekalan dari kemah aman di peta.')}</p>${RECIPES.map(r=>{const possible=s&&!E.reason(s,{items:r.cost});return `<article class="recipe-card"><h3>${esc(tr(r.name))}</h3><p>${esc(tr(r.desc))}</p><div class="ingredients">${Object.entries(r.cost).map(([k,count])=>`<span class="ingredient ${(s?.inventory[k]||0)<count?'missing':''}">${esc(tr(ITEMS[k].name))} ${(s?.inventory[k]||0)}/${count}</span>`).join('')}</div>${button('craft-recipe',L('Make one','Buat satu'),'primary','leaf',`data-recipe="${r.id}" ${safe&&possible?'':'disabled'}`)}</article>`}).join('')}`,'crafting');
+ }
+ function shop(){const s=state();sheet(L('Fair trade','Perdagangan yang adil'),`<p>${s.inventory.silver||0} ${L('silver coins','koin perak')}</p>${[['wire',L('Copper wire','Kawat tembaga')],['dew',L('Two spring dew','Dua embun mata air')],['bread',L('Honey bread','Roti madu')]].map(([id,label])=>button('trade',label+' · '+L('2 silver','2 perak'),'secondary','bag',`data-offer="${id}" ${(s.inventory.silver||0)<2?'disabled':''}`)).join('')}<p class="muted small">${L('The river merchants bring a small market wherever travelers rest.','Pedagang sungai membuka pasar kecil di tempat pengelana beristirahat.')}</p>`,'shop');}
+ function allies(){const s=state();sheet(L('Someone beside you','Seseorang di sisimu'),`<p>${L('Ask one trusted companion for help. One opening per duel.','Minta bantuan seorang rekan tepercaya. Satu kesempatan tiap duel.')}</p>${E.allies(s).filter(a=>E.has(s,a.id==='rook'?'rook_joined':a.id==='iona'?'iona_joined':'mira')).map(a=>button('ally-use',a.name+' · '+({rook:L('Distract & guide your steps','Alihkan perhatian & pandu langkah'),iona:L('Steady your guard','Kuatkan pertahanan'),mira:L('Find the weak link','Temukan titik lemah')})[a.id],'secondary','people',`data-ally="${a.id}" ${a.available&&!s.duel?.assistUsed?'':'disabled'}`)).join('')}<p class="muted small">${L('Respect, honest answers, and shared promises build trust.','Sikap hormat, jawaban jujur, dan janji bersama membangun kepercayaan.')}</p>`,'allies');}
+ function collections(which=tab){tab=which;const s=state(),unlocked=new Set(['cover_portrait',...stored('sunward.memories'),...s?.artSeen||[]]),awards=new Set([...stored('sunward.awards'),...(s?E.achievements(s).map(a=>a.id):[])]),codex=new Set(stored('sunward.codex'));
+  let body=`<div class="collection-tabs">${[['memories',L('Memories','Kenangan')],['codex',L('World notes','Catatan dunia')],['awards',L('Milestones','Pencapaian')]].map(([key,label])=>`<button class="${tab===key?'active':''}" data-action="collection-tab" data-tab="${key}">${label}</button>`).join('')}</div>`;
+  if(tab==='memories')body+=`<p class="muted small">${L('Every illustration stays whole. Revisit the moments you have found.','Setiap ilustrasi tampil utuh. Kunjungi kembali momen yang kau temukan.')}</p><div class="memory-grid">${sceneIds.filter(id=>ART[id]).map(id=>`<button class="memory-card" data-action="memory-open" data-art="${id}" ${unlocked.has(id)?'':'disabled'}>${unlocked.has(id)?img(id).replace('<img ','<img loading="lazy" decoding="async" '):`<div class="memory-locked">${ico('lock')}</div>`}<span>${unlocked.has(id)?esc(title(id)):L('A moment still ahead','Momen yang menanti')}</span></button>`).join('')}</div>`;
+  else if(tab==='codex')body+=CODEX.map(c=>{const known=codex.has(c.id)||(s&&E.has(s,c.flag));return `<article class="codex-entry"><h3>${known?esc(tr(c.title)):L('An unwritten page','Halaman yang belum ditulis')}</h3><p>${known?esc(tr(c.text)):L('Explore, listen, and look closer.','Jelajahi, dengarkan, dan perhatikan lebih dekat.')}</p></article>`}).join('');
+  else body+=ACHIEVEMENTS.map(a=>`<article class="award ${awards.has(a.id)?'earned':'locked'}"><h3>${awards.has(a.id)?'✦ ':'○ '}${esc(tr(a.title))}</h3><p>${esc(tr(a.text))}</p></article>`).join('');
+  sheet(L('Things worth keeping','Hal yang layak disimpan'),body,'collections');
+ }
+ function handle(action,el){const s=state(),n=s?NODES[s.id]:null;
+  switch(action){
+   case 'inspect-point':{const h=E.inspect(s,+el.dataset.index);activeClue={scene:n.id,id:h.id};ui.sound('clue');ui.change();return true;}
+   case 'inspect-finish':E.finishInspection(s);ui.change();ui.visual('win');return true;
+   case 'gate-toggle':E.toggleGate(s,+el.dataset.index);ui.sound('rune');ui.change();return true;
+   case 'gate-finish':E.finishMechanism(s);ui.change();ui.visual('win');return true;
+   case 'mirror-turn':E.turnMirror(s,+el.dataset.index);ui.sound('rune');ui.change();return true;
+   case 'mirror-finish':E.finishBeam(s);ui.change();ui.visual('win');return true;
+   case 'forge-step':{const r=E.rune(s,el.dataset.step);ui.sound(r==='wrong'?'wrong':r==='solved'?'win':'craft');ui.change();ui.visual(r==='wrong'?'wrong':'rune');if(r==='wrong')toast(L('The copper cooled too soon. Try again. −1 stamina.','Tembaga terlalu cepat dingin. Coba lagi. −1 stamina.'));return true;}
+   case 'return-map':ui.close();E.go(s,n.hub||CHAPTERS[s.chapter].hub);ui.change();return true;
+   case 'camp':camp();return true;
+   case 'camp-rest':E.rest(s);ui.sound('heal');ui.change();camp();return true;
+   case 'camp-forage':E.forage(s);ui.sound('clue');ui.change();camp();return true;
+   case 'camp-talk':ui.close();E.go(s,'camp_talk_'+s.chapter);ui.change();return true;
+   case 'crafting':crafting();return true;
+   case 'craft-recipe':E.craft(s,el.dataset.recipe);ui.sound('craft');ui.change();crafting();return true;
+   case 'camp-shop':shop();return true;
+   case 'trade':E.trade(s,el.dataset.offer);ui.sound('craft');ui.change();shop();return true;
+   case 'ally':allies();return true;
+   case 'ally-use':E.assist(s,el.dataset.ally);ui.close();ui.change();ui.sound('ally');ui.visual('ally');return true;
+   case 'collections':collections();return true;
+   case 'collection-tab':collections(el.dataset.tab);return true;
+   case 'memory-open':{const id=el.dataset.art;if(!ART[id])return true;sheet(title(id),`<div class="full-memory">${img(id)}</div>`,'memory');return true;}
+  }return false;
+ }
+ return {render,remember,clueVoice,handle,camp,crafting,collections,mountBattle};
+}

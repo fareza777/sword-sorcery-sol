@@ -1,0 +1,454 @@
+{
+  "reference": "app/src/main/assets/art/cast.webp",
+  "method": "built-in image_gen; one independent generated illustration per asset",
+  "rules": "Original premium bright fantasy graphic novel game artwork. Landscape 3:2, polished painterly gouache and fine ink, warm cream paper grain, detailed sunlit emerald/turquoise/amber world. All composition and full bodies inside frame with generous safe margins. Use the attached sheet ONLY as identity and costume reference, never copy its lineup or add unrequested companions. Render ONLY people explicitly named for this scene. Rowan: same tall lean adult, curly dark-brown hair, teal cloak with gold leaf embroidery and sun clasp, cream rolled sleeves, dark leather vest/trousers, brown laced boots, one gold-hilt sword at hip. Mira: same shorter slender adult, mustard scarf, long brown side braid, copper tool apron, cream blouse, olive skirt and brown boots. Iona: same slender adult, saffron hood, ivory/sage gold-leaf robe, chestnut braid, amber sun staff. Rook: same small stocky adult goblin, green hands and ears, broad reed hat, teal short cape, cream tunic, brown boots and copper bells. Vary poses naturally: front, side, three-quarter and rear according to the action. Do not pose everyone toward camera or turn everyone away. Human and goblin eyes, eyebrows and noses must be entirely hidden under low hair/hood/hat and solid ink shadow: ONLY mouths may be visible. No full masks on the four heroes. Other royal guards may use closed opaque helmets. Animals and monsters may show complete faces and expressive eyes. Preserve exact models, adult ages, proportions, costumes and equipment. No text, lettering, labels, watermark or border. No gore. Do not crop figures. Keep the whole illustration readable as a mobile story panel.",
+  "jobs": [
+    {
+      "key": "forge",
+      "scene": "Empty Briarwick blacksmith workshop in golden morning light. Two untouched cups on a workbench, a small chalk road sketch and star, a yellow ribbon on the open door, hammer and tongs, cold forge, flowers beyond window. No people or hands. Emotional environmental storytelling of a missing loved one.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-bdadc50e-299c-421c-896f-6da9c5eb69c8.png"
+    },
+    {
+      "key": "market",
+      "scene": "Sunny Briarwick market, red and cream awnings, honey bread, marigold herbs and fruit, a healer Tessa in burgundy hood gestures to a wounded wagon driver with hand bandage. Rowan listens in side three-quarter view. Only Rowan, Tessa and driver; both NPC upper faces entirely hidden, only mouths visible. No Mira, Rook or Iona.",
+      "cast": [
+        "Rowan",
+        "Tessa",
+        "Driver"
+      ]
+    },
+    {
+      "key": "gate",
+      "scene": "East gate of a charming sunlit medieval town, ivory stone arch, golden banners, cobblestone road leading to green hills, fresh wagon tracks in dirt and a small brass sun badge in grass. Rowan from rear three-quarter crouches beside tracks; one gatekeeper in closed bronze helmet points toward distant river. Only these two people.",
+      "cast": [
+        "Rowan",
+        "Gatekeeper"
+      ]
+    },
+    {
+      "key": "forest",
+      "scene": "A lush sunlit green woodland trail with towering willows, dappled light, blue flowers, birds and turquoise stream. Rowan and Rook walk naturally toward a distant old bridge, Rowan from rear three-quarter, Rook from side looking up toward him, not at camera. Only these two heroes, no Mira or Iona.",
+      "cast": [
+        "Rowan",
+        "Rook"
+      ]
+    },
+    {
+      "key": "grove",
+      "scene": "Tender moment in bright willow grove: expressive orange fox with its back paw caught in a thin wire snare beside a fallen branch. Rowan kneels in side three-quarter view carefully unwinding the wire while Rook holds leaves aside from behind. Tiny white flowers and sunbeams. Only Rowan, Rook and fox; no Mira or Iona.",
+      "cast": [
+        "Rowan",
+        "Rook"
+      ]
+    },
+    {
+      "key": "ferry",
+      "scene": "Picturesque wooden river ferry on clear turquoise water, willow banks, rope posts, flower baskets, distant ivory tower. Weathered ferryman in low straw hood stands side-on beside a plank; Rowan in rear three-quarter and Rook in front three-quarter negotiate passage. Only these three people. Ferryman upper face hidden, mouth only.",
+      "cast": [
+        "Rowan",
+        "Rook",
+        "Ferryman"
+      ]
+    },
+    {
+      "key": "table",
+      "scene": "A generous low goblin dining table under a flowering pergola beside turquoise canals. Shared honey bread, bowls of berries, three copper cups, reed crafts, woven teal-and-cream cushions around it and copper chimes overhead. A welcoming seat is left open for a guest. No people or hands. Intimate rich cultural details, warm daylight.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-8f4a419d-b689-46a8-ac68-fce0d37000f2.png"
+    },
+    {
+      "key": "waterwheel",
+      "scene": "A beautiful timber waterwheel at a goblin canal workshop in sunlight, copper bell lodged below the axle, clearly visible wooden sluice lever and three water channels. Rook in side view points to the sluice while Rowan in rear three-quarter holds a rope. Only Rowan and Rook. Detailed mechanical environmental puzzle, no Mira or Iona.",
+      "cast": [
+        "Rowan",
+        "Rook"
+      ]
+    },
+    {
+      "key": "reeds",
+      "scene": "Sunny river reedbank with a little bird nest on low willow branch and a wooden reed whistle. A young small goblin Pip in simple orange tunic and low reed hat reaches upward while adult Rook holds the branch gently. Rowan stands farther away from behind. Only these three; Pip upper face fully hidden, only small mouth visible; bird has visible animal face.",
+      "cast": [
+        "Rowan",
+        "Rook",
+        "Pip"
+      ]
+    },
+    {
+      "key": "memorial",
+      "scene": "A tranquil beautiful goblin memory tree beside a turquoise canal in golden afternoon. Many engraved COPPER LEAF pendants hang on fine threads, marigolds and tiny reed boats below, lush flowering branches, one old walking stick rests against the trunk. No legible names or writing, no people. Warm remembrance, dignity, hope rather than horror.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-4919701e-747d-4255-bd03-683c43aa37bd.png"
+    },
+    {
+      "key": "study",
+      "scene": "Sunlit mage's study in ivory tower, shelves of colorful books, copper astrolabe, glass leaf window, a folded royal order with red sun wax seal on desk, ledger and fountain pen. Iona in side three-quarter gestures toward letter while Rowan from rear three-quarter examines it, Rook waits by door. Only these three, Mira is still missing and MUST NOT appear. No legible writing.",
+      "cast": [
+        "Rowan",
+        "Rook",
+        "Iona"
+      ]
+    },
+    {
+      "key": "stairs",
+      "scene": "An opened jade rune doorway leads to elegant hidden spiral stairs descending through an ivory tower garden; golden sun rays, green vines, copper rails, flower pots. Iona from rear three-quarter leads Rowan seen side-on and Rook from behind toward stairs. Only these three; Mira is still missing and must not appear.",
+      "cast": [
+        "Rowan",
+        "Rook",
+        "Iona"
+      ]
+    },
+    {
+      "key": "lantern",
+      "scene": "An exquisite sunlit lantern workshop with many delicate glass sun lanterns in copper frames. In foreground a lantern being repaired rests on an empty bench: new wick, scissors, glass shell, small dew tonic bottles. Copper shelves, pale sage cloth and flowering arched window. No people or hands, an inviting magical crafting scene.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-ca676e4d-38f9-42b7-9db9-1b6d1593bc2c.png"
+    },
+    {
+      "key": "garden",
+      "scene": "Peaceful sunlit royal orange garden, ivory stone path, marigolds, fountain, low wooden bench. On the bench a gardeners straw hat, green work apron, basket of oranges and folded blue-seal letter addressed through a simple sun symbol, no readable writing. No people. An emotional sign of a father waiting for his son.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-1b05e27d-c349-4938-b041-f49fc5e377ba.png"
+    },
+    {
+      "key": "crown",
+      "scene": "Grand sun chamber of ivory palace with open circular roof, intricate gold and teal mosaic floor, glowing crown on a stone dais, a gold chain running toward an unseen guardian, green vines and blue sky above. Varric alone, tall broad adult in bronze armor, ochre cape and closed opaque bronze helmet, stands rear three-quarter reaching toward crown. No heroes or extra people.",
+      "cast": [
+        "Varric"
+      ]
+    },
+    {
+      "key": "seal",
+      "scene": "Close architectural view of a beautiful circular garden seal set into ivory palace floor, three large clear symbolic inlays of water, leaf and sun linked by glowing gold channels. Small glass leaves, vines and flower petals around stone. Iona side three-quarter kneels at the edge and points with amber staff, Mira from rear three-quarter steadies a copper fitting. Only these two women, exact reference models.",
+      "cast": [
+        "Iona",
+        "Mira"
+      ]
+    },
+    {
+      "key": "balcony",
+      "scene": "Intimate sibling conversation on sunlit palace balcony above green valley, hanging orange blossoms and pale gold balustrade. Rowan seated from rear three-quarter, Mira facing him in side three-quarter with only a small thoughtful mouth visible under thick bangs. She holds two oranges in copper apron. Exactly these two people. Tender natural body language, do not face camera.",
+      "cast": [
+        "Rowan",
+        "Mira"
+      ]
+    },
+    {
+      "key": "throne",
+      "scene": "Final moral choice in sunny ivory throne hall: ordinary golden crown resting on a plain oak table between Rowan seen from rear three-quarter and a broad captain Varric in closed bronze helmet side-on. Mira and Rook stand at the distant open doorway in small natural silhouettes; only these four, no Iona. Crown is an object of responsibility, not dark magic horror. Whole figures visible.",
+      "cast": [
+        "Rowan",
+        "Mira",
+        "Rook",
+        "Varric"
+      ]
+    },
+    {
+      "key": "ending_free",
+      "scene": "Hopeful ending: magnificent moss-green deer guardian with golden flowered antlers walks freely toward sunlit green hills, its complete expressive animal face in side view. Rowan seen from rear, Mira in side three-quarter and Rook from rear three-quarter watch it leave beside a broken ordinary gold crown on a stone. Exactly these three people and guardian, no Iona. Wide open sky and golden wildflowers.",
+      "cast": [
+        "Rowan",
+        "Mira",
+        "Rook"
+      ]
+    },
+    {
+      "key": "ending_crown",
+      "scene": "Thoughtful ending: Rowan with same lean build, canonical clothes and curly bangs sits on an ivory throne in three-quarter side view, a simple crown rests in his hands rather than hiding his hair. Only mouth visible, upper face fully hidden. Empty chair beside him, sunlit open court and papers about returned tools. Mira stands far away at open workshop doorway in rear three-quarter. Only Rowan and Mira.",
+      "cast": [
+        "Rowan",
+        "Mira"
+      ]
+    },
+    {
+      "key": "ending_king",
+      "scene": "An empty sunlit royal square just after a public promise. A newly signed royal river charter with a red sun wax seal and a plain golden crown rest on a small oak table in foreground; no readable writing. Returned copper tools in open crates, wide open canal floodgates, flowering banners and ivory royal balcony behind. Absolutely no people or humanoids. Hopeful legal justice conveyed through objects and flowing water.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-f8f25aaa-67d5-4888-a6ae-88e9fc3b517b.png"
+    },
+    {
+      "key": "camp",
+      "scene": "Cozy safe travel camp in a bright green woodland at warm golden afternoon, teal canvas tent, small cooking kettle and low campfire, bread, herbal tea and travel packs, flowers and a glimpse of turquoise river. Rowan in side three-quarter rests beside Rook seen from rear three-quarter, same clothing and proportions. Only these two, no Mira or Iona, inviting not dark.",
+      "cast": [
+        "Rowan",
+        "Rook"
+      ]
+    },
+    {
+      "key": "forge_clues",
+      "scene": "Close environmental illustration of an EMPTY smith workbench: two cups, chalk road sketch with small star, yellow cloth ribbon tied in a smith knot, ordinary hammer and unfinished sun pendant, daylight and flowers in window. Exactly three prominent clue groups. No people, hands or humanoids.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-82b92132-10a7-4cb7-942f-8f02d4536df5.png"
+    },
+    {
+      "key": "wagon_tracks",
+      "scene": "Low wide environmental view of fresh wagon ruts outside a sunny stone town gate. Brass sun badge in grass, a scrap of planted goblin cloth on a fence, tiny chalk star on milestone. Green valley and royal ferry in distance. No people, no hands, no silhouettes. Three clear clue groups.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-97b7b741-df2f-4494-ab31-f638cc71694b.png"
+    },
+    {
+      "key": "herbal_spring",
+      "scene": "A beautiful secret woodland herbal spring, shallow jade pools, marigold flowers, mint, glass dew droplets, a fallen healer's satchel and tiny wooden footbridge. Rowan in rear three-quarter gathers herbs with Rook side-on pointing to a harmless flowering plant. Only Rowan and Rook, no other heroes, no masks, consistent models.",
+      "cast": [
+        "Rowan",
+        "Rook"
+      ]
+    },
+    {
+      "key": "ruin_gate",
+      "scene": "Overgrown but sunny ancient roadside shrine, small ivory arch covered in green vines, three colored mirror stones on a low pedestal and a narrow root bridge. Rowan side three-quarter and Rook from behind examine symbols. Only these two people. Friendly ancient wonder, no skulls or creepy ruins, no readable writing.",
+      "cast": [
+        "Rowan",
+        "Rook"
+      ],
+      "redo": false,
+      "generated_source": "exec-ab043a4c-05c1-4b3d-a215-5a37caee1a58.png"
+    },
+    {
+      "key": "ruin_sentinel",
+      "scene": "A small ancient stone sentinel monster wakes among flowering shrine ruins, round mossy body, broad shoulders and gentle expressive amber stone eyes, one cracked leg. Rowan from rear three-quarter holds sword low defensively, Rook in side view gestures to stop. Only these two heroes and sentinel. Bright non-graphic tactical encounter, all full bodies inside frame.",
+      "cast": [
+        "Rowan",
+        "Rook"
+      ],
+      "redo": false,
+      "generated_source": "exec-f2469bf7-b291-4997-9b20-dff3a250dd55.png"
+    },
+    {
+      "key": "river_lock",
+      "scene": "Beautiful goblin river-lock control house, three clearly separate wooden channel gates with copper handles, turquoise water crossing stone steps, a stranded small delivery boat, waterwheel and marigolds. Rook side-on turns one handle while Rowan from rear three-quarter holds another. Exactly these two heroes. Readable mechanical puzzle environment, no written labels.",
+      "cast": [
+        "Rowan",
+        "Rook"
+      ],
+      "redo": false,
+      "generated_source": "exec-8cff3096-1aa8-4bfc-ab9a-6cae9fa33c27.png"
+    },
+    {
+      "key": "copper_archive",
+      "scene": "Warm daylight goblin craft archive: circular wooden shelves holding rolled reed maps, copper family leaf records, a missing-tool rack and three wax-sealed trade tokens on low desk. Rook in front three-quarter speaks to an elder Sedge in side view under broad low reed hats, Rowan from rear listens. Only these three, no Mira or Iona. Upper faces hidden, mouths visible.",
+      "cast": [
+        "Rowan",
+        "Rook",
+        "Sedge"
+      ],
+      "redo": false,
+      "generated_source": "exec-d336406d-0e0c-45f6-8d94-8ded7b25a342.png"
+    },
+    {
+      "key": "clan_festival",
+      "scene": "Joyful small river-clan lantern festival in bright late-afternoon canal village, copper chimes, leaf boats with glowing lanterns, bread and colorful woven cloth. Rowan from rear three-quarter helps Rook side-on launch a lantern boat; young Pip in orange tunic and low reed hat kneels near water. Exactly these three characters, no crowd, no Mira or Iona. Warm cultural scene, animal ducks show expressive faces.",
+      "cast": [
+        "Rowan",
+        "Rook",
+        "Pip"
+      ],
+      "redo": false,
+      "generated_source": "exec-86052288-2110-4ea5-a6d6-52b2400c7a09.png"
+    },
+    {
+      "key": "sun_observatory",
+      "scene": "Airy ivory sun observatory on wizard tower roof, copper mirrors, golden astrolabe, jade lens stands and blooming orange vines above green valley. Iona seen side three-quarter adjusts one mirror while Rowan from rear three-quarter watches with Rook at door from side. Only these three; Mira is still missing and MUST NOT appear. Clear bright magical puzzle composition.",
+      "cast": [
+        "Rowan",
+        "Rook",
+        "Iona"
+      ],
+      "redo": false,
+      "generated_source": "exec-a5047672-3d6e-46e1-8cdf-aaabcdd5ec7b.png"
+    },
+    {
+      "key": "star_chart",
+      "scene": "Environmental close-up of a beautiful ivory magical workbench with FOUR rotatable copper mirror discs at the corners of a two-row, three-column glass board; two clear glass tiles between left and right mirrors. Golden light traces a path up the left side, across the top and down to the right exit. Leaf, water and sun motifs only. No people, hands, letters or numbers. Sunlit arched window, rich painterly detail, landscape 3:2.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-ac955a6b-f292-4364-ac1a-f22f4f0933a4.png"
+    },
+    {
+      "key": "glass_aviary",
+      "scene": "Sunlit tower conservatory filled with tiny colorful living glass birds with expressive animal faces, flowering vines, copper perches and broken wing shard on a workbench. Apprentice Nell in pale sage tunic and low cream hood, upper face fully shadowed with only mouth visible, carefully holds a glass bird while Iona from rear three-quarter steadies lantern. Only Nell and Iona, no other heroes.",
+      "cast": [
+        "Iona",
+        "Nell"
+      ],
+      "redo": false,
+      "generated_source": "exec-27bdd98c-ffd0-49ac-807d-221440a3c231.png"
+    },
+    {
+      "key": "royal_kitchen",
+      "scene": "Busy but cozy royal kitchen in golden daylight, copper pots, fresh bread, orange baskets, oven and little pantry hatch. Rowan side three-quarter quietly speaks with older cook in blue apron and low linen cap; cook upper face entirely hidden, mouth only. Rook from rear three-quarter checks a flour-dusted bootprint by pantry. Only these three, no Mira or Iona.",
+      "cast": [
+        "Rowan",
+        "Rook",
+        "Cook"
+      ],
+      "redo": false,
+      "generated_source": "exec-c0975b23-d432-4ea3-88ed-2e6378c4b209.png"
+    },
+    {
+      "key": "prison_cell",
+      "scene": "Hopeful sunlit royal holding room, open barred door, flowering courtyard visible outside, plain bench and small blue-seal letter. A young adult guard Oren's son in plain cream shirt with low brown bangs hiding upper face, only mouth visible, stands relieved beside Rowan from rear three-quarter. Exactly these two people, no other heroes, no chains or torture or gore.",
+      "cast": [
+        "Rowan",
+        "Wren"
+      ],
+      "redo": false,
+      "generated_source": "exec-45220b50-276b-4d4a-a85b-729feb9c7369.png"
+    },
+    {
+      "key": "smuggler_dock",
+      "scene": "Secret but bright palace canal landing beneath an ivy arch, small wooden cargo boat, stolen copper tools in crates and royal red-sun wax seal on a broken rope spool. Rowan seen from behind and Rook side three-quarter inspect the crates. Exactly these two heroes, no Mira or Iona, blue sky reflected in turquoise water, moral mystery not grim crime scene.",
+      "cast": [
+        "Rowan",
+        "Rook"
+      ],
+      "redo": false,
+      "generated_source": "exec-80a4e559-15ac-4ce9-93f7-b3f6461d5514.png"
+    },
+    {
+      "key": "storm_bridge",
+      "scene": "Dramatic daylight sunshower over a green valley footbridge, rain sparkles in golden sunlight and a rainbow appears, a wooden supply cart is stuck beside a cracked plank. Rowan in side view braces the cart while Rook from rear three-quarter secures rope. Exactly these two, same models and adult proportions, no other heroes. Exciting rescue without gore, full bodies.",
+      "cast": [
+        "Rowan",
+        "Rook"
+      ],
+      "redo": false,
+      "generated_source": "exec-98b20f82-7049-4752-af33-b099fbd6c706.png"
+    },
+    {
+      "key": "garden_meeting",
+      "scene": "Quiet secret meeting among flowering orange trees at the royal garden, copper tools hidden in an empty fruit crate. Rowan from rear three-quarter listens to gardener Oren in side view wearing green apron and low straw hat with only mouth visible. A young guard in closed opaque bronze helmet stands anxiously at a distance. Only these three, no other heroes, bright afternoon.",
+      "cast": [
+        "Rowan",
+        "Oren",
+        "Guard"
+      ],
+      "redo": false,
+      "generated_source": "exec-82f32537-8066-45f5-84c8-417d234842dc.png"
+    },
+    {
+      "key": "trial_square",
+      "scene": "Bright hopeful public reckoning in royal square: captain Varric with broad build in closed opaque bronze helmet stands beside a table with his surrendered sword and signed order. Rowan in side three-quarter holds evidence, Rook seen from rear stands beside returned copper tools. Exactly these three, no crowd, no Mira or Iona, sunlight and flowering banners, justice without humiliation or gore.",
+      "cast": [
+        "Rowan",
+        "Rook",
+        "Varric"
+      ],
+      "redo": false,
+      "generated_source": "exec-85a64854-39c5-4937-bef5-1826d09a2134.png"
+    },
+    {
+      "key": "shared_breakfast",
+      "scene": "Warm simple family breakfast after the adventure in Briarwick forge garden. Canonical Rowan in side three-quarter has slightly burnt honey toast, Mira seen from rear three-quarter offers him an orange, Rook in front three-quarter laughs with only mouth visible beneath reed hat. Three mugs, bread, flowers and open workshop door, exactly these three, no Iona. Same models and clothing, intimate natural posture.",
+      "cast": [
+        "Rowan",
+        "Mira",
+        "Rook"
+      ],
+      "redo": false,
+      "generated_source": "exec-7782bfef-58c5-4549-8889-5b013e697c45.png"
+    },
+    {
+      "key": "bell_forging",
+      "scene": "Hopeful close environmental story illustration: three small newly forged copper bells sit beside broken pieces of a plain golden crown on a sunlit smith workbench, hammer and tongs, orange flowers and teal cloth, glowing gentle forge behind. No people or hands or writing. Rich material texture, promise of shared responsibility, original painterly graphic novel.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-745b4ef3-0374-48a7-a1e1-c8d89ef04e0a.png"
+    },
+    {
+      "key": "battle_arena",
+      "scene": "Empty elegant sunny ivory training courtyard in a bright fantasy palace, three-quarter stage view with wide flat green-and-gold mosaic floor in lower half, flowering vines and arches behind, soft turquoise valley visible beyond. NO people, NO animals, NO weapons. Clear open space for two moving full-body characters, landscape 3:2, safe margins. Painterly gouache and fine ink matching the reference style.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-2ced3012-9865-4c4b-b3b2-e9a8d28f9cc4.png"
+    },
+    {
+      "key": "rowan_idle",
+      "kind": "sprite",
+      "scene": "ONLY canonical Rowan, FIRST figure in attached reference. Tall lean athletic adult, curly dark brown hair entirely covering eyes and nose, only small mouth visible. Teal gold-leaf cloak, sun clasp, cream rolled sleeves, dark leather vest and trousers, brown boots, same gold-hilt sword. Full-body relaxed combat guard, SIDE THREE-QUARTER facing RIGHT, sword held low toward right. Preserve exact reference build and costume.",
+      "cast": [
+        "Rowan"
+      ],
+      "redo": false,
+      "generated_source": "exec-1e119749-38da-4274-a067-24826b7d330c.png"
+    },
+    {
+      "key": "rowan_strike",
+      "kind": "sprite",
+      "scene": "ONLY canonical Rowan, FIRST figure in attached reference, exact same model, tall lean adult, same curly dark hair, teal gold-leaf cloak, cream sleeves, leather vest/trousers, brown boots, gold-hilt sword. Full-body dynamic sword lunge to RIGHT, side three-quarter, torso and feet anatomically natural, cape follows motion. Upper face completely hidden, only determined mouth visible. Sword tip and trailing cloak completely in frame, generous margins.",
+      "cast": [
+        "Rowan"
+      ],
+      "redo": false,
+      "generated_source": "exec-73cddf53-167e-486d-9fab-45ae0a7a32dd.png"
+    },
+    {
+      "key": "rowan_ward",
+      "kind": "sprite",
+      "scene": "ONLY canonical Rowan, FIRST figure in attached reference, exact same tall lean model, curly dark hair, teal/gold-leaf cloak, cream sleeves, leather vest/trousers and brown boots. Full-body SIDE THREE-QUARTER facing RIGHT, left hand raised to create small translucent gold sun ward, sword held low in right hand. Upper face entirely hidden, only mouth visible. Ward glow has alpha transparency, no scene.",
+      "cast": [
+        "Rowan"
+      ],
+      "redo": false,
+      "generated_source": "exec-84f248ef-fb3d-47bb-9b1d-48f35fb3707e.png"
+    },
+    {
+      "key": "enemy_brambleback",
+      "kind": "sprite",
+      "scene": "ONLY a powerful BRAMBLEBACK woodland beast: bear-like body, rich brown fur, bark armor across broad back with moss, small leaf spines and flowers, expressive warm animal eyes and complete face. Full-body SIDE THREE-QUARTER facing LEFT toward opponent, braced alert defensive pose, four paws entirely visible, same bright graphic novel world, not terrifying and no gore.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-779782dc-b1b3-4f27-8a69-62a2f43d5b04.png"
+    },
+    {
+      "key": "enemy_sentinel",
+      "kind": "sprite",
+      "scene": "ONLY a friendly ancient STONE SENTINEL monster, short broad round mossy stone body, expressive amber stone eyes and simple face, copper warning bell on shoulder, one cracked lower leg. Full-body SIDE THREE-QUARTER facing LEFT toward opponent, big stone hands held in defensive warning pose, flowers in small moss patches, feet entirely visible, bright fantasy style, no gore.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-fcd821fa-9e50-4965-9e70-d907bcb6efeb.png"
+    },
+    {
+      "key": "enemy_captain",
+      "kind": "sprite",
+      "scene": "ONLY Captain Varric, tall BROAD adult swordsman, bronze royal armor with subtle sun motifs, ochre cape, CLOSED opaque bronze helmet with NO eyes or eyeholes or slits visible. Full-body SIDE THREE-QUARTER facing LEFT toward opponent, royal longsword raised in a steady guard. Same scale as Rowan but broader, entire blade, cape and boots in frame.",
+      "cast": [
+        "Varric"
+      ],
+      "redo": false,
+      "generated_source": "exec-46281000-c41b-4d8d-ba97-9002748ba4b7.png"
+    },
+    {
+      "key": "enemy_guardian",
+      "kind": "sprite",
+      "scene": "ONLY magnificent valley GUARDIAN, a powerful moss-green deer-like creature with broad flowing chest fur, golden branching antlers with small flowers, fully visible kind expressive animal eyes and complete face. Full-body SIDE THREE-QUARTER facing LEFT, alert protective stance, all four hooves and every antler tip completely inside frame with generous margins. Elegant strong silhouette, same bright painterly fantasy world.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-ec5d7187-edd1-4526-ad09-46a4533f80a2.png"
+    },
+    {
+      "key": "ending_river",
+      "cast": [],
+      "scene": "A restored goblin riverside copper workshop after a fair charter. Entire detailed landscape 3:2. Open emerald river lock and wooden trade boats in distance, copper leaves engraved with abstract patterns, returned hammers and tongs neatly placed on a round workbench, two small copper promise bells on a window sill, fresh tea and honey bread. A cheerful community can work freely again. No people, no humanoids or hands, no letters or written text.",
+      "redo": false,
+      "generated_source": "exec-bac02d79-a960-47db-b266-310fb3b02ac6.png"
+    },
+    {
+      "key": "ending_beacon",
+      "cast": [],
+      "scene": "Ending illustration: a bright flourishing fantasy valley at golden sunrise. Three distinct small bell towers, in a warm cream village, a green goblin river settlement, and a hilltop sun observatory, linked by a delicate protective golden light arc. Foreground a welcoming open repair-school doorway with neatly arranged tools and three small copper bells, flowers and vines. No people, no humanoids, no text. Rich painterly detail, entire beautiful landscape in safe margins.",
+      "redo": false,
+      "generated_source": "exec-92bcf68c-de57-41cf-8995-59562da509d5.png"
+    }
+  ],
+  "spriteRules": "Original premium painterly gouache and fine ink fantasy game character sprite, truly TRANSPARENT background with an alpha channel. Single requested character ONLY, no scene, no ground, no extra people, no text or labels. Entire full body, all limbs, ears, weapons, cloak and feet fully within canvas, generous 15 percent transparent margins. Portrait 2:3. Use attached canonical cast sheet ONLY for identity: exact proportions, adult age, hair, clothes, colors, equipment. Human upper face including eyes, eyebrows and nose is completely hidden by thick hair or solid hood shadow; ONLY mouth visible. No full mask on Rowan. Creatures can have complete expressive faces and eyes. Warm sunlit emerald, amber, cream palette, beautiful clean silhouette, detailed premium graphic novel art. Face the opponent naturally; no cropped feet, swords or antlers.",
+  "environmentRules": "Original premium bright fantasy graphic novel environment illustration, painterly gouache and delicate ink on warm cream paper, sunlit emerald, amber and turquoise, exquisite material detail, beautiful natural composition, landscape 3:2 with safe margins. NO PEOPLE, no humanoids, no hands or silhouettes, no faces. This is an environmental object illustration. No text, labels, letters or border. Whole composition, no crop."
+}
