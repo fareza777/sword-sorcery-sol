@@ -1,0 +1,12 @@
+* text=auto
+*.mjs text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.svg text eol=lf
+gradlew text eol=lf
+*.png binary
+*.webp binary
+*.mp3 binary
+*.wav binary
+*.woff2 binary
+app/src/main/assets/fonts/*-OFL.txt whitespace=-blank-at-eol

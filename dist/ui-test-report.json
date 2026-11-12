@@ -1,0 +1,46 @@
+{
+  "checks": 486,
+  "variants": [
+    {
+      "w": 360,
+      "h": 640,
+      "lang": "en",
+      "large": false
+    },
+    {
+      "w": 360,
+      "h": 640,
+      "lang": "id",
+      "large": false
+    },
+    {
+      "w": 360,
+      "h": 640,
+      "lang": "en",
+      "large": true
+    },
+    {
+      "w": 360,
+      "h": 640,
+      "lang": "id",
+      "large": true
+    },
+    {
+      "w": 390,
+      "h": 844,
+      "lang": "en",
+      "large": false
+    },
+    {
+      "w": 390,
+      "h": 844,
+      "lang": "id",
+      "large": true
+    }
+  ],
+  "failures": [],
+  "errors": [],
+  "renderedEndings": 5,
+  "sideQuests": 6,
+  "externalRequestsAllowed": false
+}

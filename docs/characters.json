@@ -1,0 +1,11 @@
+{
+  "reference": "app/src/main/assets/art/cast.webp",
+  "rule": "Reuse the exact same model, age, proportions, hairstyle, costume, colors and signature equipment. Front and three-quarter poses are welcome. Only a mouth may be visible; hide human eyes, eyebrows and noses entirely under hair, hood or solid ink shadow. Animals and monsters may show complete faces and eyes.",
+  "cast": [
+    {"name":"Rowan","age":24,"heightCm":178,"build":"lean athletic, long-legged adult","hair":"messy curly dark brown bangs, fully obscuring upper face","costume":"teal cloak, gold leaf embroidery, round sun clasp, cream rolled sleeves, dark leather vest and trousers, brown laced boots, bracers and fingerless gloves","equipment":"one gold-hilt longsword in a dark scabbard at left hip, leather satchel"},
+    {"name":"Mira","age":21,"heightCm":166,"build":"slender adult","hair":"dark brown thick bangs and long braid over right shoulder","costume":"mustard scarf, cream rolled-sleeve blouse, copper leather tool apron, olive skirt, brown laced boots","equipment":"smith hammer and apron tools"},
+    {"name":"Iona","age":35,"heightCm":172,"build":"slender adult","hair":"long chestnut braid over right shoulder","costume":"ivory and sage robes with gold leaf embroidery, saffron hood casting a solid black upper-face shadow","equipment":"gold staff with amber sun orb"},
+    {"name":"Rook","age":"adult","heightCm":105,"build":"stocky small goblin","hair":"hidden under broad reed hat","costume":"green hands and pointed ears, broad low-brim reed hat, teal short cape, cream tunic, brown satchel and boots","equipment":"copper bells and river walking stick"},
+    {"name":"Varric","age":46,"heightCm":184,"build":"broad adult swordsman","hair":"hidden by bronze helmet","costume":"bronze royal armor, closed opaque faceplate with no eyeholes or slits, ochre cape","equipment":"royal longsword"}
+  ]
+}

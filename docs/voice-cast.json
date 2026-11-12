@@ -1,0 +1,18 @@
+{
+  "provider": "Deepgram Aura 2",
+  "language": "en",
+  "voices": {
+    "Rowan": "aura-2-orion-en",
+    "Mira": "aura-2-asteria-en",
+    "Rook": "aura-2-hermes-en",
+    "Iona": "aura-2-athena-en",
+    "Varric": "aura-2-odysseus-en",
+    "Elder Sedge": "aura-2-zeus-en",
+    "Pip": "aura-2-luna-en",
+    "Tessa": "aura-2-helena-en",
+    "Nell": "aura-2-andromeda-en",
+    "Oren": "aura-2-arcas-en"
+  },
+  "tracks": 160,
+  "characters": 11911
+}

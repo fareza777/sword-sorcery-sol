@@ -1,0 +1,38 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'com.ashenroad.sunward'
+    compileSdk 35
+    buildFeatures { buildConfig true }
+    signingConfigs {
+        if (System.getenv('SUNWARD_KEYSTORE')) {
+            localRelease {
+                storeFile file(System.getenv('SUNWARD_KEYSTORE'))
+                storePassword System.getenv('SUNWARD_SIGNING_PASSWORD')
+                keyAlias 'sunward'
+                keyPassword System.getenv('SUNWARD_SIGNING_PASSWORD')
+            }
+        }
+    }
+    defaultConfig {
+        applicationId 'com.ashenroad.sunward'
+        minSdk 24
+        targetSdk 35
+        versionCode 1
+        versionName '1.0.0'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (System.getenv('SUNWARD_KEYSTORE')) signingConfig signingConfigs.localRelease
+        }
+        local {
+            initWith release
+            signingConfig signingConfigs.debug
+            debuggable false
+            matchingFallbacks = ['release']
+        }
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+    lint { abortOnError true }
+}
+dependencies { implementation 'com.google.android.gms:play-services-ads:23.6.0' }

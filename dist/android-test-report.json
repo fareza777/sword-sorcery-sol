@@ -1,0 +1,29 @@
+{
+  "device": "emulator-5580",
+  "api": "35",
+  "airplaneMode": true,
+  "offlineVoice": {
+    "src": "https://appassets.androidplatform.net/audio/intro-0.mp3",
+    "duration": 3.744,
+    "time": 0.305388
+  },
+  "coldRestartSave": true,
+  "puzzle": true,
+  "duel": true,
+  "optionalRewardedUnavailableHandled": true,
+  "endings": 5,
+  "info": {
+    "width": 393,
+    "height": 778,
+    "bridge": true,
+    "phoneLanguage": "en",
+    "fonts": "loaded",
+    "endingGallery": [
+      "council",
+      "free",
+      "crown",
+      "king",
+      "home"
+    ]
+  }
+}
