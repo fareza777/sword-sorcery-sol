@@ -12,9 +12,9 @@ async function current(){return p.evaluate(async()=> (await import('/app.mjs')).
 let fast=false;
 async function press(action,extra=''){const selector=`[data-action="${action}"]${extra}`;const inSheet=p.locator('#overlay '+selector);const el=(await inSheet.count()?inSheet:p.locator(selector)).first();if(fast)await el.dispatchEvent('click');else await el.click();}
 async function pages(){while(await p.locator('[data-action="next"]').count())await press('next');}
-async function pick(to){await pages();const s=await current(),index=NODES[s.id].choices.findIndex(c=>c.to===to);assert.ok(index>=0,s.id+' → '+to);for(let i=0;i<4&&!await p.locator(`[data-action="choose"][data-index="${index}"]`).count();i++)await press('choice-more');await press('choose',`[data-index="${index}"]`);assert.equal((await current()).id,to);}
-async function visit(to){let s=await current();while(s.stamina<E.maxStamina(s)||s.mana<10){await press('rest');s=await current()}const i=NODES[s.id].locations.findIndex(c=>c.to===to);assert.ok(i>=0);await press('travel',`[data-index="${i}"]`);s=await current();if(s.event){const j=EVENTS[s.event.index].choices.findIndex(c=>!E.reason(s,c.need));await press('event',`[data-index="${j}"]`)}assert.equal((await current()).id,to);}
-async function fight(){for(let i=0;i<6;i++){const s=await current();if(!s.duel)break;const tell=E.telegraph(s)[0],move=tell==='sweep'?'guard':tell==='rush'?'dodge':'strike';await press('duel',`[data-move="${move}"]`)}assert.ok(!(await current()).duel)}
+async function pick(to){await pages();const s=await current(),index=NODES[s.id].choices.findIndex(c=>c.to===to);assert.ok(index>=0,s.id+' → '+to);for(let i=0;i<12&&!await p.locator(`[data-action="choose"][data-index="${index}"]`).count();i++){const first=+(await p.locator('[data-action=choose]').first().getAttribute('data-index'));await press(index<first?'choice-previous':'choice-more');}await press('choose',`[data-index="${index}"]`);assert.equal((await current()).id,to);}
+async function visit(to){let s=await current();while(s.stamina<E.maxStamina(s)||s.mana<10){await press('rest');s=await current()}const i=NODES[s.id].locations.findIndex(c=>c.to===to);assert.ok(i>=0);for(let page=0;page<6&&!await p.locator(`[data-action="travel"][data-index="${i}"]`).count();page++){const first=+(await p.locator('[data-action=travel]').first().getAttribute('data-index'));await press(i<first?'map-prev':'map-next');}await press('travel',`[data-index="${i}"]`);s=await current();if(s.event){const j=EVENTS[s.event.index].choices.findIndex(c=>!E.reason(s,c.need));await press('event',`[data-index="${j}"]`)}assert.equal((await current()).id,to);}
+async function fight(){for(let i=0;i<10;i++){const s=await current();if(!s.duel)break;const tell=E.telegraph(s)[0],move=tell==='sweep'?'guard':['rush','feint'].includes(tell)?'dodge':tell==='flare'?'ward':'strike';await press('duel',`[data-move="${move}"]`)}assert.ok(!(await current()).duel)}
 async function nextChapter(){await press('advance');await press('begin-chapter');}
 
 async function inspect(){for(let i=0;i<3;i++)await press('inspect-point',`[data-index="${i}"]`);await press('listen');await press('inspect-finish');}
@@ -52,7 +52,7 @@ for(const v of variants){
  await p.setViewportSize({width:v.w,height:v.h});
  await press('pause');await press('settings');await p.locator('#language').selectOption(v.lang);if(await p.locator('#pref-large').isChecked()!==v.large)await p.locator('#pref-large').click();await press('close');
  for(const n of Object.values(NODES)){
-  const s=E.fresh(12);s.inventory=Object.fromEntries(Object.keys(ITEMS).map(k=>[k,2]));s.relations={rook:8,iona:8,mira:8,tessa:8};E.go(s,n.id);s.page=n.lines.length-1;
+  const s=E.fresh(12);s.inventory=Object.fromEntries(Object.keys(ITEMS).map(k=>[k,2]));s.relations={rook:8,iona:8,mira:8,tessa:8};E.go(s,n.id);s.page=n.lines.length-1;s.textPage=12;
   if(n.kind==='ending')s.ending=n.id.replace('ending_','');
   await press('pause');await press('home');await p.evaluate(s=>localStorage.setItem('sunward.save.v1',s),E.serialize(s));await press('continue');await p.locator('.screen').waitFor();assert.equal((await current()).id,n.id);
   await p.waitForFunction(()=>[...document.querySelectorAll('#app img')].every(i=>i.complete));

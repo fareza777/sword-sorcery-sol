@@ -5,13 +5,26 @@
   "offlineVoice": {
     "src": "https://appassets.androidplatform.net/audio/intro-0.mp3",
     "duration": 3.744,
-    "time": 3.094117
+    "time": 0.172343
   },
   "coldRestartSave": true,
   "puzzle": true,
   "duel": true,
   "optionalRewardedUnavailableHandled": true,
   "endings": 7,
+  "legacyMigration": {
+    "fromFeatures": 2,
+    "toFeatures": 3,
+    "id": "ending_beacon",
+    "resourcesPreserved": true
+  },
+  "committedNativeStorage": true,
+  "evidence": true,
+  "contextItems": true,
+  "equipment": true,
+  "stances": true,
+  "peacefulCombat": true,
+  "characterLayers": true,
   "investigation": true,
   "waterGates": true,
   "beamPuzzle": true,

@@ -1,43 +1,52 @@
-# Validation · Sunward Oath 1.1.0
+# Validation · Sunward Oath 1.2.0
 
-Validated on 12 November 2026. This update was tested in a browser and a dedicated emulator only. The player's physical phone was not accessed.
+Validated on 13 November 2026 with Chrome and a dedicated Android emulator. The player's physical phone was not accessed.
 
-## Automated game rules and media
+## Game rules and media
 
-`npm test`: **38 tests passed**. Covers all seven endings, all twelve side quests, graph reachability of 131 beats, resources and recovery, encounter consequences, save validation and migration, investigation rewards, water-gate persistence and unsafe-route rejection, sixteen mirror configurations, forging, atomic crafting, once-per-chapter gathering, trading, trusted ally assists and sun shards. Thirty original and thirty expanded seeded journeys complete successfully.
+npm test: **65 tests passed**. Covers all seven endings, twelve side quests, graph reachability and bilingual text for 137 beats, resources, recovery, encounters, save validation, investigation, water gates, all sixteen mirror configurations, forging, crafting, gathering, trade and trusted ally assists. Thirty original and thirty expanded seeded journeys finish successfully.
 
-Media checks require all planned art to be generated, every scene/page/encounter to use a completed WebP, all seven battle layers to contain genuine alpha transparency, all 266 VO tracks to exist, and all three original 64-second scores to be complete. Old SVG scene placeholders are removed.
+New coverage verifies all five evidence pairs, wrong-pair recovery, reward duplication protection, contextual item costs, diagram assistance, four stances, observation, second-phase feints, all four peaceful combat exits, gear effects, world changes, Tessa's later witness and the return-record/tool tradeoffs. A complete chronological journey proves the river evidence, bell reward and return-record action work in chapter three before the signed orders become available.
+
+Six storage tests verify browser fallback, legacy migration, native save precedence over a stale WebView copy, commit ordering, WebView quota recovery and failed-write reporting.
+
+Media checks require all 108 planned generated assets, genuine alpha in character/item/prop cutouts, every story art reference, all 282 bundled VO tracks and three complete original 64-second scores. Old vector scene placeholders are absent.
 
 ## Rendered browser interface
 
-`npm run test:ui`: **786 layout checks passed**. Every story beat in English and Indonesian at 360×640 and 390×844, including larger text. A complete rendered six-chapter journey finishes all twelve quests, visits camp, gathers and crafts, solves the new interactions, chooses all seven endings, resumes a save, and uses inventory, journal, bonds, settings, memories, world notes and milestones. External requests are blocked in this test. No missing images, browser errors or out-of-screen controls.
+- **822 layout checks**, tests/ui.mjs: every beat in English and Indonesian at 360×640 and 390×844, including larger text. Also plays six chapters and twelve side quests through actual controls, selects seven endings and verifies resume, inventory, journal, bonds, settings and collections. External requests are blocked. No missing images, layout failures or browser errors.
+- **24 battle layouts**, tests/battle-ui.mjs: four opponents across six viewport/language/type variants. Checks generated layers, full-image containment, guard poses, ally controls and reduced motion.
+- **18 readability views and feature interactions**, tests/adventure-ui.mjs: actual hotspots, evidence, chapter-appropriate river reward, returning the record, contextual wire use, equipment, visible gear, changed-world art, wheel/lantern motion, stances, observation, peaceful combat and voice-driven characters. Visible labels are at least 15px. Reduced motion disables animation.
+- **76 menu/sheet/chapter views**, tests/menu-readability.mjs: title, settings, about, ending previews without an active game, memories, codex, awards, inventory, context use, journal, evidence, bonds, camp, trade, crafting, pause, help and chapter cards. Both languages and type sizes. Text is at least 15px; panels stay within the viewport.
+- **13 voice replay cases**, tests/voice.mjs: all four second-phase warnings, Tessa's return, investigation, conversations, puzzles, camp and encounters.
 
-`node tests/battle-ui.mjs`: **24 additional generated battle layouts passed**, covering four opponents across six screen/language/type variants. Verifies whole-image containment, active guard poses, ally controls and OS reduced motion. Combat controls remain visible throughout attack animations.
-
-`node tests/voice.mjs`: **eight replay cases passed**: conversation, investigation clue, sentinel, mirror puzzle, forging, camp conversation, brambleback and encounter.
-
-Reports: `dist/ui-test-report.json` and `dist/battle-ui-report.json`.
+Reports in dist/: ui-test-report.json, battle-ui-report.json, adventure-ui-report.json and menu-readability-report.json. The layout/readability suites cover 940 views/checks in addition to the played journeys.
 
 ## Native Android offline
 
-Dedicated Android 15 / API 35 QA emulator, airplane mode enabled, Wi-Fi and data disabled. `node tests/native-offline.mjs` passed:
+Dedicated **SunwardOath_QA**, Android 15 / API 35, emulator-5580, airplane mode enabled and Wi-Fi/data disabled. tests/native-offline.mjs verifies:
 
-- Actual bundled intro VO playback: 3.744-second file; playback advanced to 3.094 seconds.
-- Save restored after force-stop and a cold restart.
-- Indonesian text, bundled fonts and the native bridge load offline.
-- Rune puzzle, tactical duel, investigation, water gates, mirror routing, forging, gathering, crafting and trusted ally assistance.
-- All generated combat layers load with containment inside the native WebView.
-- All seven ending choices and persistent ending discoveries.
-- Unavailable rewarded ad produces a useful message; free hints remain usable.
+- Actual playback of the bundled 3.744-second intro VO.
+- A genuine 1.1 save snapshot migrates from feature schema 2 to 3 while retaining ending location, paragraph and resources.
+- The latest chosen scene survives an immediate force-stop and cold restart. Android commits private native storage synchronously before the action completes; a stale WebView copy cannot overwrite it.
+- Unrelated native storage keys are rejected.
+- Indonesian text, bundled fonts and the Android bridge work offline.
+- Rune puzzle, tactical duel, investigation, water gates, mirror routing, forging, gathering, crafting and ally assistance.
+- Evidence-based captain surrender, river evidence/record-return tradeoff, contextual inventory, equipment, stances, observation, peaceful combat and layered camp characters.
+- Generated battle actors load with full-image containment.
+- Seven ending choices and persistent ending discoveries.
+- Unavailable rewarded ads show useful feedback; free hints remain usable.
 
-The harness waits for the title/game screen rather than the splash. The emulator was shut down after testing. Report: `dist/android-test-report.json`. Native screenshots: `dist/android-offline-battle.png` and `dist/android-offline-ending.png`.
+The harness refuses physical devices. Optional SUNWARD_QA_LEGACY_FILE accepts a captured save for repeatable migration checks. Reports: dist/android-test-report.json and dist/native-migration-report.json. Screenshots: dist/android-offline-battle.png and dist/android-offline-ending.png.
 
 ## APK integrity and limits
 
-Debug, local and protected-signing release builds pass. Release lint and both APK Signature Scheme v2 verifications pass. Version code 2, version name 1.1.0, minimum API 24, target API 35. Both distributed APKs disable debugging. `python tools/verify_artifacts.py` confirms both APKs contain the exact source assets: 66 generated images, 266 voice tracks and three scores. Report: `dist/artifact-report.json`.
+Debug, primary/local and protected-signing release builds succeed. Release lint and both APK Signature Scheme v2 verifications pass. Version code **3**, version name **1.2.0**, minimum API 24, target API 35. Both distributed APKs disable debugging. tools/verify_artifacts.py checks every packaged asset exactly matches the source: 108 generated images, 282 voice tracks and three scores. dist/artifact-report.json records byte counts and hashes.
 
-Deepgram synthesis runs only at build time; no speech key or signing material is included. Ads retain the actual Google Mobile Ads SDK and demo IDs. Offline QA verifies graceful ad unavailability, not production ad fill. VO is English with full Indonesian text. The Rate entry explains that Google Play ratings open after store publication.
+Speech synthesis runs only at build time. No speech credential or signing material is included in APKs or source archives. Ads use the actual Google Mobile Ads SDK with demo IDs. Offline QA tests unavailable-ad recovery, not production ad fill. VO is English with complete Indonesian text. Rate explains that Google Play reviews open after publication.
 
 ## Visual review
 
-All 66 generated assets were reviewed together and gameplay screenshots were inspected. Cast identity uses `art/cast.webp`; exact cast lists prevent Mira appearing before her rescue. The first camp uses the empty forge before Rook joins. Human upper faces are obscured, only mouths express emotion; animals and monsters can show their complete faces. Poses vary naturally. Entire images are displayed without cropping.
+All 43 new/replacement images were inspected against the canonical model sheet, and rendered gameplay screenshots were reviewed. The full set contains 108 generated raster assets. Rowan's proportions, costume and model remain consistent across emotional poses. Upper human/goblin faces stay obscured; animals and monsters can show their whole faces. Poses vary naturally. Scene art uses containment without zoom or cropping. Icons and sprites preserve transparency.
+
+Character motion uses a complete generated base image with subtle masked duplicate overlays rather than a skeletal rig. Environmental props are separate generated assets. The app setting and OS reduced-motion preference disable animation. Optional reference sheets scroll; main story screens paginate.

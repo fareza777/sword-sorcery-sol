@@ -1,0 +1,16 @@
+{
+  "hotspot": true,
+  "evidence": true,
+  "contextUse": true,
+  "equipment": true,
+  "visibleEquipment": true,
+  "worldArt": true,
+  "animatedEnvironment": true,
+  "stances": true,
+  "peacefulDuel": true,
+  "layeredCharacter": true,
+  "voiceDrivenCharacter": true,
+  "readabilityChecks": 18,
+  "issues": [],
+  "errors": []
+}

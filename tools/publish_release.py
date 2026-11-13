@@ -14,7 +14,7 @@ def request(url,method='GET',data=None,mime='application/json'):
     h=dict(headers)
     if data is not None:h['Content-Type']=mime
     with urllib.request.urlopen(urllib.request.Request(url,data=data,headers=h,method=method),timeout=180)as response:return json.load(response)
-body=(root/'docs/RELEASE-1.1.0.md').read_text(encoding='utf-8')
+body=(root/('docs/RELEASE-'+version+'.md')).read_text(encoding='utf-8')
 
 base='https://api.github.com/repos/'+repo
 try:release=request(base+'/releases/tags/'+tag)

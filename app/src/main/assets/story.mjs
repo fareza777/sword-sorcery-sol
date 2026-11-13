@@ -1,3 +1,4 @@
+import {enhanceStory} from './adventure-data.mjs';
 // Original bilingual story. Each beat is deliberately short enough for one portrait panel.
 import {expandStory} from './expansion.mjs';
 export const T=(en,id)=>[en,id];
@@ -171,4 +172,5 @@ export const EVENTS=[
 export const SPEAKERS={Rowan:T('Rowan · swordsman','Rowan · pendekar'),Mira:T('Mira · smith','Mira · pandai besi'),Rook:T('Rook · river scout','Rook · pengintai sungai'),Iona:T('Iona · sun mage','Iona · penyihir surya'),Varric:T('Varric · captain','Varric · kapten'),'Elder Sedge':T('Sedge · river keeper','Sedge · penjaga sungai')};
 Object.assign(SPEAKERS,{Gatekeeper:T('Gatekeeper','Penjaga gerbang'),Ferryman:T('Ferryman','Tukang feri'),Traveler:T('Traveler','Pengelana'),Merchant:T('Merchant','Pedagang'),'Young Guard':T('Young guard','Pengawal muda')});
 expandStory({N,C,T,back,NODES,ITEMS,QUESTS,CHAPTERS,EVENTS,SPEAKERS});
+enhanceStory({N,C,T,back,NODES,ITEMS});
 export {RECIPES,CODEX,ACHIEVEMENTS} from './expansion.mjs';

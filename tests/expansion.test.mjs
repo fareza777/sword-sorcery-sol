@@ -28,14 +28,14 @@ test('fair trade cannot create negative currency',()=>{
  const s=E.fresh();E.go(s,'village_map');E.trade(s,'wire');assert.equal(s.inventory.silver,2);assert.equal(s.inventory.copper_wire,2);E.trade(s,'dew');assert.equal(s.inventory.silver,0);assert.throws(()=>E.trade(s,'bread'));assert.equal(s.inventory.silver,0);
 });
 test('trusted ally provides one tactical opening per duel',()=>{
- const s=E.fresh();E.apply(s,{flags:['rook_joined'],relations:{rook:1}});E.go(s,'bridge_duel');assert.throws(()=>E.assist(s,'rook'));E.apply(s,{relations:{rook:1}});E.assist(s,'rook');assert.equal(s.duel.hp,4);assert.equal(s.assists,1);assert.throws(()=>E.assist(s,'rook'));const r=E.restore(E.serialize(s));assert.ok(r.duel.assistUsed);
+ const s=E.fresh();E.apply(s,{flags:['rook_joined'],relations:{rook:1}});E.go(s,'bridge_duel');assert.throws(()=>E.assist(s,'rook'));E.apply(s,{relations:{rook:1}});E.assist(s,'rook');assert.equal(s.duel.hp,6);assert.equal(s.assists,1);assert.throws(()=>E.assist(s,'rook'));const r=E.restore(E.serialize(s));assert.ok(r.duel.assistUsed);
 });
 test('a sun shard pays for a ward even when mana is empty',()=>{
- const s=E.fresh();s.inventory.ward_shard=1;s.mana=0;E.go(s,'bridge_duel');E.duelMove(s,'ward');assert.equal(s.mana,0);assert.equal(s.inventory.ward_shard,0);assert.equal(s.duel.hp,4);assert.throws(()=>E.duelMove(s,'ward'));
+ const s=E.fresh();s.inventory.ward_shard=1;s.mana=0;E.go(s,'bridge_duel');E.duelMove(s,'ward');assert.equal(s.mana,0);assert.equal(s.inventory.ward_shard,0);assert.equal(s.duel.hp,6);assert.throws(()=>E.duelMove(s,'ward'));
 });
 test('old version-one mid-duel saves keep progress and gain safe feature defaults',()=>{
  const old={version:1,id:'bridge_duel',page:0,chapter:1,stamina:7,mana:4,wounds:0,inventory:{bread:1,tonic:1},relations:{rook:2,iona:0,mira:0,tessa:1},flags:['rook_joined'],seen:['intro','village_map','road_start','bridge_duel'],taken:['intro:0'],journal:['intro','road_start','bridge_duel'],events:[0],travel:3,rests:1,seed:11,puzzle:[],puzzleMistakes:0,duel:{round:1,hp:4,guard:3,log:null},event:null,ending:null,steps:7};
- const s=E.restore(JSON.stringify(old));assert.ok(s);assert.equal(s.id,old.id);assert.equal(s.stamina,7);assert.equal(s.duel.round,1);assert.equal(s.duel.maxHp,6);assert.deepEqual(s.encounters,[0]);assert.equal(s.inventory.herbs,undefined);E.duelMove(s,'dodge');assert.ok(E.restore(E.serialize(s)));
+ const s=E.restore(JSON.stringify(old));assert.ok(s);assert.equal(s.id,old.id);assert.equal(s.stamina,7);assert.equal(s.duel.round,1);assert.equal(s.duel.maxHp,8);assert.deepEqual(s.encounters,[0]);assert.equal(s.inventory.herbs,undefined);E.duelMove(s,'dodge');assert.ok(E.restore(E.serialize(s)));
 });
 test('all newly introduced story nodes have complete bilingual text and meaningful exits',()=>{
  for(const n of Object.values(NODES)){assert.ok(n.lines.every(t=>t.length===2&&t.every(Boolean)));if(n.kind==='inspect')assert.ok(n.hotspots.every(h=>h.text.every(Boolean)&&h.label.every(Boolean)));if(['inspect','beam','mechanism','forge'].includes(n.kind))assert.ok(NODES[n.win]&&NODES[n.hub]);}

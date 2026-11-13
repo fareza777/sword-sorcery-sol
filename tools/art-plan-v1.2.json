@@ -1,0 +1,374 @@
+{
+  "method": "built-in ImageGen; one independent asset per request; complete images and alpha preserved",
+  "reference": "app/src/main/assets/art/cast.webp",
+  "rules": "Original premium bright fantasy graphic novel game artwork. Landscape 3:2, polished painterly gouache and fine ink, warm cream paper grain, detailed sunlit emerald/turquoise/amber world. All composition and full bodies inside frame with generous safe margins. Use the attached sheet ONLY as identity and costume reference, never copy its lineup or add unrequested companions. Render ONLY people explicitly named for this scene. Rowan: same tall lean adult, curly dark-brown hair, teal cloak with gold leaf embroidery and sun clasp, cream rolled sleeves, dark leather vest/trousers, brown laced boots, one gold-hilt sword at hip. Mira: same shorter slender adult, mustard scarf, long brown side braid, copper tool apron, cream blouse, olive skirt and brown boots. Iona: same slender adult, saffron hood, ivory/sage gold-leaf robe, chestnut braid, amber sun staff. Rook: same small stocky adult goblin, green hands and ears, broad reed hat, teal short cape, cream tunic, brown boots and copper bells. Vary poses naturally: front, side, three-quarter and rear according to the action. Do not pose everyone toward camera or turn everyone away. Human and goblin eyes, eyebrows and noses must be entirely hidden under low hair/hood/hat and solid ink shadow: ONLY mouths may be visible. No full masks on the four heroes. Other royal guards may use closed opaque helmets. Animals and monsters may show complete faces and expressive eyes. Preserve exact models, adult ages, proportions, costumes and equipment. No text, lettering, labels, watermark or border. No gore. Do not crop figures. Keep the whole illustration readable as a mobile story panel.",
+  "environmentRules": "Original premium bright fantasy graphic novel environment illustration, painterly gouache and delicate ink on warm cream paper, sunlit emerald, amber and turquoise, exquisite material detail, beautiful natural composition, landscape 3:2 with safe margins. NO PEOPLE, no humanoids, no hands or silhouettes, no faces. This is an environmental object illustration. No text, labels, letters or border. Whole composition, no crop.",
+  "spriteRules": "Original premium painterly gouache and fine ink fantasy game character sprite, truly TRANSPARENT background with an alpha channel. Single requested character ONLY, no scene, no ground, no extra people, no text or labels. Entire full body, all limbs, ears, weapons, cloak and feet fully within canvas, generous 15 percent transparent margins. Portrait 2:3. Use attached canonical cast sheet ONLY for identity: exact proportions, adult age, hair, clothes, colors, equipment. Human upper face including eyes, eyebrows and nose is completely hidden by thick hair or solid hood shadow; ONLY mouth visible. No full mask on Rowan. Creatures can have complete expressive faces and eyes. Warm sunlit emerald, amber, cream palette, beautiful clean silhouette, detailed premium graphic novel art. Face the opponent naturally; no cropped feet, swords or antlers.",
+  "iconRules": "Original premium bright fantasy game inventory icon, painterly gouache and fine ink, warm amber emerald cream palette. Truly transparent alpha background. Square 1:1. Only the requested object, centered with 15 percent clear margins, legible bold silhouette, coherent soft sunlight, no ground, no people, no border, no text, no watermark. Keep every part inside the image.",
+  "jobs": [
+    {
+      "key": "arena_bridge",
+      "kind": "environment",
+      "scene": "Empty old stone and timber bridge across a turquoise woodland river, lush ferns and flowers, a broken iron chain on a post. Clear wide flat fighting space across lower center, no characters. Warm morning light. Restrained ornament, natural wood and moss.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-fbc91691-9945-448f-baa3-b0ab95dd3d0b.png"
+    },
+    {
+      "key": "arena_shrine",
+      "kind": "environment",
+      "scene": "Empty ancient root-crossing shrine in sunlit forest. Broad pale mossy stone platform, round sun arch, small empty copper bell hook, huge roots forming a safe bridge behind. Clear lower center for two combatants. No characters.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-eb04e17d-fd1e-4079-8d37-c3fad622fc3c.png"
+    },
+    {
+      "key": "arena_sun",
+      "kind": "environment",
+      "scene": "Empty royal Sun Chamber with an open circular roof, warm cream stone, a broken gold chain, restrained sun mosaic, green valley visible through tall arches. Wide clear foreground floor for two combatants, no figures.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-752dd556-4f6d-467f-8b47-dd95995917dc.png"
+    },
+    {
+      "key": "world_river_open",
+      "kind": "environment",
+      "scene": "Tinkermere after the floodgate repair: open safe canal, several small trade boats carrying copper tools and fruit, welcoming reed-roof workshops, copper bells and leaf contracts, flowing turquoise water. An empty circular mill wheel housing at far left, no wheel inside it. No people. Bright joyful life returning to the river.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-903c1dec-a60b-4d4b-b416-b66a827be806.png"
+    },
+    {
+      "key": "world_market_helped",
+      "kind": "scene",
+      "scene": "Briarwick market after the healer was helped: well stocked honey-bread and herb stalls, repaired fruit wagon, six anonymous villagers trading, watering flowers and carrying baskets. Adults in burgundy, olive and cream clothes, low straw hats, hoods or back views hide upper faces entirely; only mouths visible. No heroes. Full bodies with margins. Cheerful, clear silhouettes, restrained gold ornament.",
+      "cast": [
+        "villagers"
+      ],
+      "redo": false,
+      "generated_source": "exec-b5da7c4a-1581-4bc1-87c8-5b5cbc7ab984.png"
+    },
+    {
+      "key": "world_shrine_fixed",
+      "kind": "scene",
+      "scene": "The same forest root-crossing shrine, a friendly round mossy stone sentinel with amber creature eyes and a copper warning bell on shoulder kneels beside a safe root bridge. Its repaired leg wrapped neatly in copper. Flowers, warm light, a peaceful clear crossing. Only the sentinel; no humans or goblins.",
+      "cast": [
+        "sentinel"
+      ],
+      "redo": false,
+      "generated_source": "exec-c1bb5d6c-07e1-485f-8fe0-e596b57ceaf9.png"
+    },
+    {
+      "key": "rowan_talk",
+      "kind": "actor",
+      "scene": "ONLY canonical Rowan, first character in the reference. Same tall lean adult proportions and exact teal gold-leaf cloak, sun clasp, cream sleeves, leather vest/trousers, brown boots and sheathed gold-hilt sword. calm open speaking mouth, one open hand explaining, side three-quarter facing right. Entire full body centered with generous margin. Curly hair completely hides eyes, eyebrows AND nose, only mouth visible. No companions.",
+      "cast": [
+        "Rowan"
+      ],
+      "redo": false,
+      "generated_source": "exec-c52563c3-341c-42d8-b832-146ca7f89d41.png"
+    },
+    {
+      "key": "rowan_doubt",
+      "kind": "actor",
+      "scene": "ONLY canonical Rowan, first character in the reference. Same tall lean adult proportions and exact teal gold-leaf cloak, sun clasp, cream sleeves, leather vest/trousers, brown boots and sheathed gold-hilt sword. head slightly tilted, closed hesitant mouth, one hand resting on chin, left three-quarter. Entire full body centered with generous margin. Curly hair completely hides eyes, eyebrows AND nose, only mouth visible. No companions.",
+      "cast": [
+        "Rowan"
+      ],
+      "redo": false,
+      "generated_source": "exec-8c88987a-6d68-4269-8041-6d533cc74376.png"
+    },
+    {
+      "key": "rowan_anger",
+      "kind": "actor",
+      "scene": "ONLY canonical Rowan, first character in the reference. Same tall lean adult proportions and exact teal gold-leaf cloak, sun clasp, cream sleeves, leather vest/trousers, brown boots and sheathed gold-hilt sword. determined tight mouth, shoulders firm, one hand open in protest, right three-quarter; controlled anger without violence. Entire full body centered with generous margin. Curly hair completely hides eyes, eyebrows AND nose, only mouth visible. No companions.",
+      "cast": [
+        "Rowan"
+      ],
+      "redo": false,
+      "generated_source": "exec-bd802df9-98d0-4313-a03c-a00385e81c83.png"
+    },
+    {
+      "key": "rowan_hurt",
+      "kind": "actor",
+      "scene": "ONLY canonical Rowan, first character in the reference. Same tall lean adult proportions and exact teal gold-leaf cloak, sun clasp, cream sleeves, leather vest/trousers, brown boots and sheathed gold-hilt sword. tired mouth, one hand holding upper arm, weight shifted naturally, minor bandage on sleeve; no gore. Entire full body centered with generous margin. Curly hair completely hides eyes, eyebrows AND nose, only mouth visible. No companions.",
+      "cast": [
+        "Rowan"
+      ],
+      "redo": false,
+      "generated_source": "exec-e57a1bf1-d037-4c92-84d1-48282fbbb2f3.png"
+    },
+    {
+      "key": "rowan_relief",
+      "kind": "actor",
+      "scene": "ONLY canonical Rowan, first character in the reference. Same tall lean adult proportions and exact teal gold-leaf cloak, sun clasp, cream sleeves, leather vest/trousers, brown boots and sheathed gold-hilt sword. small warm smile, relaxed shoulders, one hand over heart, left three-quarter. Entire full body centered with generous margin. Curly hair completely hides eyes, eyebrows AND nose, only mouth visible. No companions.",
+      "cast": [
+        "Rowan"
+      ],
+      "redo": false,
+      "generated_source": "exec-93e9ea2b-7009-4fc7-80e4-79d0b28dfa58.png"
+    },
+    {
+      "key": "ally_rook",
+      "kind": "actor",
+      "scene": "Rook alone, same short stocky adult green goblin, broad low reed hat, teal cape, cream tunic, brown boots, copper bells; side three-quarter facing left, lifting a small promise bell. Entire full body in frame, only mouth visible, no other characters.",
+      "cast": [
+        "Rook"
+      ],
+      "redo": false,
+      "generated_source": "exec-0b36ab0f-b5c1-49b0-a378-7f45a3b6c7b5.png"
+    },
+    {
+      "key": "ally_iona",
+      "kind": "actor",
+      "scene": "Iona alone, same tall slender adult mage, saffron hood with solid upper-face shadow, ivory sage gold robe, amber staff and chestnut braid; right three-quarter, one hand raised to help. Entire full body in frame, only mouth visible, no other characters.",
+      "cast": [
+        "Iona"
+      ],
+      "redo": false,
+      "generated_source": "exec-4e03a64e-9bb9-40e8-9af2-041f420cc6d3.png"
+    },
+    {
+      "key": "ally_mira",
+      "kind": "actor",
+      "scene": "Mira alone, same shorter slender adult smith, mustard head scarf, thick brown bangs, long side braid, copper apron, cream blouse, olive skirt and brown boots; left three-quarter, offering a smith tool. Entire full body in frame, only mouth visible, no other characters.",
+      "cast": [
+        "Mira"
+      ],
+      "redo": false,
+      "generated_source": "exec-8bb1be42-f481-4fc6-b180-5d809ce7403c.png"
+    },
+    {
+      "key": "item_bread",
+      "kind": "icon",
+      "scene": "one round rustic honey bread loaf with one cut slice. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-0b1479e6-ea28-46c4-ae7c-83c62d18b314.png"
+    },
+    {
+      "key": "item_tonic",
+      "kind": "icon",
+      "scene": "one small corked bottle of pale turquoise dew tonic. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-54df1e1f-dbcd-4614-bf11-aa47264005da.png"
+    },
+    {
+      "key": "item_balm",
+      "kind": "icon",
+      "scene": "one small ceramic jar of marigold healing balm with yellow petals. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-7b05c4aa-d6ae-4e01-8603-2e33fd040682.png"
+    },
+    {
+      "key": "item_ribbon",
+      "kind": "icon",
+      "scene": "one yellow cloth ribbon tied in a smith knot. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-9dde7c53-2873-4882-8de2-3cdd847d9048.png"
+    },
+    {
+      "key": "item_token",
+      "kind": "icon",
+      "scene": "one brass royal sun-guard badge with an extra ray. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-519ac8ed-d824-40ee-8aba-5c385857cb35.png"
+    },
+    {
+      "key": "item_flute",
+      "kind": "icon",
+      "scene": "one short handmade green reed whistle with copper binding. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-3568ac65-a8d1-4317-9f0d-75af0ff2125a.png"
+    },
+    {
+      "key": "item_copper",
+      "kind": "icon",
+      "scene": "one little copper promise bell with teal cord. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-3bc8ed00-1026-4cfe-a47e-47935635d2a8.png"
+    },
+    {
+      "key": "item_letter",
+      "kind": "icon",
+      "scene": "one rolled royal order with red sun wax seal; no readable writing. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-18338889-2a76-415d-a9b5-fb2aea348128.png"
+    },
+    {
+      "key": "item_diagram",
+      "kind": "icon",
+      "scene": "one parchment seal diagram with simple leaf, water-drop and sun shapes; no writing. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-97b832ca-8f9d-4984-86e9-fed008bf48fd.png"
+    },
+    {
+      "key": "item_key",
+      "kind": "icon",
+      "scene": "one small ornate brass workshop key. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-a6d44359-ece3-4e22-b162-5bb5d9fef92e.png"
+    },
+    {
+      "key": "item_pendant",
+      "kind": "icon",
+      "scene": "one twin-sun pendant on a brown cord. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-52ba03c2-d870-4e5d-b554-e2397370c70e.png"
+    },
+    {
+      "key": "item_herbs",
+      "kind": "icon",
+      "scene": "one small gathered bundle of fresh green field herbs and yellow flowers. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-80e52328-2dad-49d0-b23c-921f547f739e.png"
+    },
+    {
+      "key": "item_dew",
+      "kind": "icon",
+      "scene": "one clear corked vial of magical spring dew. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-c8e260c7-895b-4c8c-9cff-1658e0d0b568.png"
+    },
+    {
+      "key": "item_honey",
+      "kind": "icon",
+      "scene": "one squat glass jar of amber wild honey with wooden lid. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-7933877e-d628-436b-9146-0ce671e3c269.png"
+    },
+    {
+      "key": "item_copper_wire",
+      "kind": "icon",
+      "scene": "one neat coil of copper repair wire. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-1632899f-7c6d-4685-b148-2db39dd552ab.png"
+    },
+    {
+      "key": "item_silver",
+      "kind": "icon",
+      "scene": "three silver coins stamped with abstract sun marks. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-b7702fda-8e5a-4298-9948-e8820cca6a67.png"
+    },
+    {
+      "key": "item_ward_shard",
+      "kind": "icon",
+      "scene": "one amber magical sun crystal shard. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-2ab68407-90c5-4dac-86ef-77aa08371048.png"
+    },
+    {
+      "key": "item_receipt",
+      "kind": "icon",
+      "scene": "one engraved copper leaf trade record with geometric marks; no letters. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-e2b07940-d30a-44ee-8764-bff3c8c37ec2.png"
+    },
+    {
+      "key": "item_testimony",
+      "kind": "icon",
+      "scene": "one folded testimony parchment tied in blue ribbon and a blue wax seal; no writing. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-74b80097-4893-4549-9350-2b6b5edc9637.png"
+    },
+    {
+      "key": "item_mirrors",
+      "kind": "icon",
+      "scene": "one polished amber observatory lens in a brass ring. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-0faba215-19b4-4eb8-89bf-1b1a4ab92cec.png"
+    },
+    {
+      "key": "item_bells",
+      "kind": "icon",
+      "scene": "three little matching copper bells of different sizes with teal cords. One compact readable item composition, no hands.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-024c9cb7-22f0-4370-93a5-b51c36254671.png"
+    },
+    {
+      "key": "gear_sunleaf",
+      "kind": "icon",
+      "scene": "one small bronze and teal leaf-shaped leather shoulder guard with a gold sun stud, practical repaired armor, not a helmet.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-3dfd3cb2-9774-4ece-98a6-47f54dab7818.png"
+    },
+    {
+      "key": "gear_river_bell",
+      "kind": "icon",
+      "scene": "one tiny copper promise bell and teal ribbon fastened to a leather belt clip.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-8449e37a-dc4d-446f-a1b6-61e8d423dcbe.png"
+    },
+    {
+      "key": "env_wheel",
+      "kind": "prop",
+      "scene": "one round wooden waterwheel with copper axle and six simple spokes, straight-on side view, rotationally balanced center. No water, no structure.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-59de0a4b-32cd-46ae-bd32-7fe7ecf91bb9.png"
+    },
+    {
+      "key": "env_bird",
+      "kind": "prop",
+      "scene": "one small turquoise and amber glass songbird, full body flying side view with wings open, complete animal eyes allowed.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-b781c2dc-2e63-487b-9902-d74763fc873d.png"
+    },
+    {
+      "key": "env_lantern",
+      "kind": "prop",
+      "scene": "one small warm glowing copper-and-reed river lantern on a green leaf boat. No water surface.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-695012f3-30d1-44bc-af5a-b3c75a963912.png"
+    },
+    {
+      "key": "env_leaf",
+      "kind": "prop",
+      "scene": "one graceful green willow leaf with a small golden edge, side-on natural curve.",
+      "cast": [],
+      "redo": false,
+      "generated_source": "exec-a90d293f-6a25-4357-a9fd-38e6425e1ff6.png"
+    },
+    {
+      "key": "forge_clues",
+      "kind": "environment",
+      "redo": false,
+      "cast": [],
+      "scene": "Empty blacksmith workbench investigation close-up, bright soft morning light, landscape 3:2. EXACTLY THREE clearly separated clues: two ceramic tea cups near upper left-center (40 percent across, 32 percent down); a small white chalk STAR and east-road sketch near lower LEFT (25 percent across, 68 percent down); a torn dry DARK TEAL goblin cloth snagged on a nail at lower RIGHT (80 percent across, 65 percent down). The torn cloth is NOT a yellow ribbon. No metal sun token on the table. Hammer and tongs pushed to back edge, rain-wet open doorway behind, no people or hands. Make these three touchable objects large and unambiguous.",
+      "generated_source": "exec-ed0858a5-5309-4783-960d-524b91e3cfaf.png"
+    },
+    {
+      "key": "kitchen_clues",
+      "kind": "environment",
+      "cast": [],
+      "scene": "Empty royal kitchen counter investigation close-up, bright cream stone and warm bread oven behind, landscape 3:2, no people or hands. Three large clearly separated objects on a pale wooden counter: blue-wax-sealed note at upper right-center (65 percent across, 35 percent down); red sun-marked cargo rope coil lower RIGHT (82 percent across, 70 percent down); three wooden bread-ration tokens and a loaf lower LEFT (27 percent across, 65 percent down). NO readable writing. Distinct blue, red, honey-brown clues, no other distracting objects.",
+      "redo": false,
+      "generated_source": "exec-487c95f5-a369-4bf6-a0c0-d4fa6c43b6fc.png"
+    }
+  ]
+}

@@ -1,22 +1,22 @@
 [
   {
-    "file": "sunward-oath-1.1.0.apk",
-    "bytes": 64694914,
-    "sha256": "388616041e1c95162397368e561c507f674b5b55304e0c2cc8b66f7ef7946f27",
+    "file": "sunward-oath-1.2.0.apk",
+    "bytes": 79934221,
+    "sha256": "948490da6024bfd8932dd724d675a0b40de86e08fc1a05b6f2733b66b720be61",
     "assetsMatchSource": true,
     "debuggable": false,
-    "artAssets": 66,
-    "offlineVoices": 266,
+    "artAssets": 108,
+    "offlineVoices": 282,
     "offlineScores": 3
   },
   {
-    "file": "sunward-oath-1.1.0-release.apk",
-    "bytes": 64694914,
-    "sha256": "da14cb9d823cb79df064e9e6760188239cc98a67d97d4cf93d0e626dda189fa5",
+    "file": "sunward-oath-1.2.0-release.apk",
+    "bytes": 79934221,
+    "sha256": "9360b3562738875b0f3fd648674c52b754eed8bfcbf0334f00ef6330f2ab92b1",
     "assetsMatchSource": true,
     "debuggable": false,
-    "artAssets": 66,
-    "offlineVoices": 266,
+    "artAssets": 108,
+    "offlineVoices": 282,
     "offlineScores": 3
   }
 ]

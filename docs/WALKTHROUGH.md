@@ -58,3 +58,44 @@ The tent button on any map opens camp. Gather once per chapter for two stamina, 
 A companion with at least two trust can help once per duel: Rook creates pressure and restores a step, Iona strengthens the guard and mana, Mira finds a weak link. A sun shard pays for one Sun Ward automatically before mana is used.
 
 Open Memories on the title screen or at camp to revisit unlocked artwork in full, read six world notes and track eight milestones. Discoveries survive a new journey.
+
+## Evidence and consequences in 1.2
+
+During investigations, tap the numbered objects on the illustration. The eye button hides or shows these markers; named controls below the art provide the same interactions. Open **Put the evidence together** from the journal, satchel or pause menu. Select two cards, even across card pages, and connect them. An incorrect pair costs nothing. Established connections persist.
+
+| Pair | Result |
+| --- | --- |
+| Dry goblin cloth + Mira's chalk star | Proves the accusation was planted. Explain this to Tessa at the market. |
+| Escort badge + signed orders | Connects the escort to Varric; his guards begin to doubt him. |
+| Copper trade leaf + escort badge | Connects the accepted delivery to the royal escort. Show it at the clan council after restoring the river. Both clues are available before leaving the river chapter. |
+| Wren's testimony + signed orders | Gives the guards a witness who can confront their commander. |
+| Seal diagram + twin sun pendant | Explains how to loosen the guardian's binding during a safe opening. |
+
+If you helped Tessa's patients and explained the planted cloth, ask for her help at the palace guard post. She brings a driver who saw the escort. With the linked badge/orders, the village witness can persuade Varric to surrender. Wren and his linked testimony provide a separate peaceful route. Neither witness requires winning a duel first.
+
+Restoring the river and showing the linked trade evidence earns the river bell and repair wire. Returning the original trade record from the archive or council earns trust, three silver and cheaper wire, but consumes the receipt required by the river-charter ending. Its established connection remains in your evidence board. At the dock, returning tools immediately restores people's work and earns wire/trust; breaking their seals sacrifices the sealed cargo evidence. Keeping the crates sealed preserves the court route. These are explicit tradeoffs.
+
+Help also changes the places you revisit: Tessa's market reopens and bread costs one silver, a repaired sentinel makes forest rest restore five stamina, and the working river has a new illustration. The pause menu's **The valley remembers** lists your current effects.
+
+## Contextual inventory and equipment
+
+The bag button on a scene illustration opens only useful item actions for that location. It can apply the badge at the ferry, wire at the shrine, key at the workshop or whistle at the guardian using the same story choices and costs. At either rune puzzle, the diagram prepares the first two runes once; choose the final rune yourself.
+
+Completing Tessa's medicine quest gives the sunleaf shoulder guard. The river council's evidence scene gives the river promise bell. Equip either from the satchel while safe. The guard prevents one lost guard point per duel; the bell restores one mana on the first perfect counter. Both are visible on Rowan during battles, and both can be removed without consuming them.
+
+## Tactical openings
+
+The **Tactics** button changes stance before a move. Balanced uses normal costs. Guarded blocks one additional hit when guarding but reduces strike pressure by one. Light-footed dodges for one stamina but strikes cost three. Focused wards deal three pressure for three mana. A sun shard still pays for a ward before mana is spent.
+
+Read the movement to spend one round, regain one stamina and mana and add one pressure to the next action. This bonus cannot stack. The round limit still applies. At half remaining enemy pressure, phase two begins: low feints require a dodge, while the guardian's binding flare calls for a Sun Ward. The visible warning and replayable VO explain each move.
+
+Two correct counters or observations build a calm opening. With the enemy at half pressure or below, Tactics can offer a peaceful finish:
+
+| Opponent | Additional requirement |
+| --- | --- |
+| Brambleback | Two stamina to loosen its chain. |
+| Sentinel | One copper wire to repair its bell. |
+| Guardian | Linked diagram/pendant evidence and one mana. |
+| Varric | Linked badge/orders and Wren/orders evidence. |
+
+Normal victory, retreat after defeat and the earlier noncombat story choices remain available. The four opponents have distinct arenas. Trusted companions now enter the battle illustration when helping, with a bell, ward or tool effect appropriate to their role.

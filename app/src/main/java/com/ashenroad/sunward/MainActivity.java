@@ -97,6 +97,19 @@ public class MainActivity extends Activity {
         @Override public void onAdFailedToShowFullScreenContent(AdError error){fullScreen=false;if(reward){js("window.nativeReward?.('unavailable')");loadRewarded();}else{js("window.nativeChapterClosed?.()");loadInterstitial();}}
     };}
     private class Bridge {
+        private boolean storageKey(String key){
+            if(key==null)return false;
+            switch(key){
+                case "sunward.save.v1":case "sunward.backup.v1":case "sunward.checkpoint.v1":
+                case "sunward.prefs":case "sunward.endings":case "sunward.onboard":
+                case "sunward.memories":case "sunward.awards":case "sunward.codex":return true;
+                default:return false;
+            }
+        }
+        @JavascriptInterface public String readStorage(String key){return storageKey(key)?prefs.getString("web:"+key,null):null;}
+        @JavascriptInterface public boolean writeStorage(String key,String value){
+            return storageKey(key)&&value!=null&&value.length()<=262144&&prefs.edit().putString("web:"+key,value).commit();
+        }
         @JavascriptInterface public String language(){return Locale.getDefault().getLanguage();}
         @JavascriptInterface public void banner(boolean show){runOnUiThread(()->{wantsBanner=show;banner.setVisibility(show&&adsReady?View.VISIBLE:View.GONE);});}
         @JavascriptInterface public void chapter(int chapter){runOnUiThread(()->{

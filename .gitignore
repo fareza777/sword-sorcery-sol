@@ -12,6 +12,7 @@ dist/*source.zip
 dist/*.apk
 dist/*.zip
 dist/release.json
+dist/SHA256SUMS.txt
 dist/layout-failure-*.png
 dist/android-initial.png
 tmp/
