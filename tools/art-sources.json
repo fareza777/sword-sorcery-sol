@@ -106,5 +106,9 @@
   "env_wheel": "exec-59de0a4b-32cd-46ae-bd32-7fe7ecf91bb9.png",
   "env_bird": "exec-b781c2dc-2e63-487b-9902-d74763fc873d.png",
   "env_lantern": "exec-695012f3-30d1-44bc-af5a-b3c75a963912.png",
-  "env_leaf": "exec-a90d293f-6a25-4357-a9fd-38e6425e1ff6.png"
+  "env_leaf": "exec-a90d293f-6a25-4357-a9fd-38e6425e1ff6.png",
+  "rowan_guard": "exec-fcd6b525-0419-49f5-b1b2-dfe1f527f598.png",
+  "fx_metal_sparks": "exec-3db1c095-9459-434c-9e4b-6bd8f69e6c83.png",
+  "fx_sun_guard": "exec-5596e518-af6a-433d-a8cb-9c4a51a9fe73.png",
+  "fx_sword_arc": "exec-cfcd2241-8be8-4e12-8f54-edaf7d91fce3.png"
 }

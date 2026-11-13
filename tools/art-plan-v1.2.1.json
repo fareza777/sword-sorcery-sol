@@ -1,0 +1,37 @@
+{
+  "method": "built-in ImageGen, one transparent asset per request; original alpha and complete canvas preserved",
+  "reference": [
+    "app/src/main/assets/art/cast.webp",
+    "app/src/main/assets/art/rowan_ward.webp"
+  ],
+  "jobs": [
+    {
+      "key": "rowan_guard",
+      "kind": "actor",
+      "redo": false,
+      "scene": "Repose only Rowan from the reference images into a strong believable two-handed sword parry, facing RIGHT in three-quarter side view, feet planted apart and knees bent, weight braced on the rear leg. Both gloved hands grip the same gold sword hilt near chest/shoulder height; the steel blade angles steeply UP and RIGHT to intercept an incoming high blow. No incoming attacker. Preserve exactly the same lean adult age 24, height 178cm, curly dark-brown hair, teal cloak with gold leaf embroidery and sun clasp, cream rolled sleeves, brown leather vest/trousers, leather satchel and laced boots. Entire full body, blade tip, cloak and boots inside a portrait canvas with 12 percent transparent safe margins. Upper face completely covered by thick low hair and solid shadow: NO eyes, eyebrows or nose; only determined closed mouth visible. Beautiful clean anatomy and clear sword silhouette. Premium bright fantasy gouache and fine ink matching the references. Truly transparent alpha background. No scene, ground, circle, magic shield, extra arms, extra swords, letters or labels.",
+      "generated_source": "exec-fcd6b525-0419-49f5-b1b2-dfe1f527f598.png"
+    },
+    {
+      "key": "fx_metal_sparks",
+      "kind": "effect",
+      "redo": false,
+      "scene": "A single beautiful sword-parry impact spark for a premium painterly fantasy game, truly transparent background. Sharp white-gold point of contact at center with a small fan of tapered silver/amber steel sparks shooting diagonally upward and right, three tiny copper flecks below, delicate fine-ink and luminous gouache texture. Sparse elegant energetic shape, NOT fireworks, NOT a circular ring, NOT an explosion, no smoke, weapons, hands, characters, black background or text. Full effect within square canvas, 18 percent transparent margins. Clear at small mobile size.",
+      "generated_source": "exec-3db1c095-9459-434c-9e4b-6bd8f69e6c83.png"
+    },
+    {
+      "key": "fx_sun_guard",
+      "kind": "effect",
+      "redo": false,
+      "scene": "Single ornate magical SUN WARD barrier for a bright painterly sword-and-sorcery mobile game, truly transparent background. A tall curved heraldic kite-shaped panel of translucent ivory-gold light, elegant teal-and-gold leaf filigree along its edges, a small faceted sun crest near the upper third, four branching luminous ribs and an open airy lattice, fine glowing fragments at the lower edge. Three-quarter angle viewed from left, ready to stand between a hero on the left and incoming attack from the right. Beautiful hand-painted gouache/ink with fine material detail and delicate gold particles. NOT a plain circle, no circular outline, no solid opaque shield, no character or hand, no scenery, no lettering. Preserve generous transparent safe margins and the whole barrier.",
+      "generated_source": "exec-5596e518-af6a-433d-a8cb-9c4a51a9fe73.png"
+    },
+    {
+      "key": "fx_sword_arc",
+      "kind": "effect",
+      "redo": false,
+      "scene": "Single elegant directional sword-swing trail for a premium bright fantasy gouache game, truly transparent alpha background. A tapered white-silver and warm-gold brushstroke sweeps from lower LEFT to upper RIGHT, two thinner trailing echoes, subtle painterly texture, crisp bright leading edge, a few tiny light flecks. Dynamic narrow crescent slash, not a whole circle, no rings, no explosion, no weapons, people, hands, smoke or text. Full effect within landscape canvas with generous transparent margins, readable when used as a brief battle overlay.",
+      "generated_source": "exec-cfcd2241-8be8-4e12-8f54-edaf7d91fce3.png"
+    }
+  ]
+}

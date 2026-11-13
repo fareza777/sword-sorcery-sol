@@ -5,7 +5,7 @@
   "offlineVoice": {
     "src": "https://appassets.androidplatform.net/audio/intro-0.mp3",
     "duration": 3.744,
-    "time": 0.172343
+    "time": 0.130035
   },
   "coldRestartSave": true,
   "puzzle": true,

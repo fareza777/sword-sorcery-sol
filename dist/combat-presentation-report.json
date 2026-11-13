@@ -1,0 +1,19 @@
+{
+  "viewport": {
+    "width": 393,
+    "height": 797
+  },
+  "numericEnemyHP": true,
+  "healthBar": true,
+  "damageFeedback": true,
+  "generatedParryPose": true,
+  "generatedDefenseEffects": true,
+  "duplicateTapBlocked": true,
+  "backgroundVoicePaused": true,
+  "finishingMoveSavedBeforeAnimation": true,
+  "reducedMotion": true,
+  "noRepeatedBird": true,
+  "riverCurrent": true,
+  "visibleInventoryItems": 4,
+  "errors": []
+}

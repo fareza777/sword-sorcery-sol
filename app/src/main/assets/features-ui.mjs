@@ -74,7 +74,7 @@ export function createFeatures(ui){
    case 'camp-shop':shop();return true;
    case 'trade':E.trade(s,el.dataset.offer);ui.sound('craft');ui.change();shop();return true;
    case 'ally':allies();return true;
-   case 'ally-use':E.assist(s,el.dataset.ally);ui.close();ui.change();ui.sound('ally');ui.visual('ally');ui.adventure.feedback(el.dataset.ally);return true;
+   case 'ally-use':E.assist(s,el.dataset.ally);ui.close();ui.change();ui.sound('ally');ui.adventure.feedback(el.dataset.ally);return true;
    case 'collections':collections();return true;
    case 'collection-tab':collections(el.dataset.tab);return true;
    case 'memory-open':{const id=el.dataset.art;if(!ART[id])return true;sheet(title(id),`<div class="full-memory">${img(id)}</div>`,'memory');return true;}

@@ -1,6 +1,6 @@
-# Validation · Sunward Oath 1.2.0
+# Validation · Sunward Oath 1.2.1
 
-Validated on 13 November 2026 with Chrome and a dedicated Android emulator. The player's physical phone was not accessed.
+Validated on 13 November 2026 with Chrome and a dedicated Android emulator. An initial review of 1.2.0 on a connected phone identified excessive inventory spacing. Version 1.2.1 is being delivered from computer-only testing and has not been installed on that physical phone.
 
 ## Game rules and media
 
@@ -10,7 +10,7 @@ New coverage verifies all five evidence pairs, wrong-pair recovery, reward dupli
 
 Six storage tests verify browser fallback, legacy migration, native save precedence over a stale WebView copy, commit ordering, WebView quota recovery and failed-write reporting.
 
-Media checks require all 108 planned generated assets, genuine alpha in character/item/prop cutouts, every story art reference, all 282 bundled VO tracks and three complete original 64-second scores. Old vector scene placeholders are absent.
+Media checks require all 112 planned generated assets, genuine alpha in character/item/prop cutouts, every story art reference, all 282 bundled VO tracks and three complete original 64-second scores. Old vector scene placeholders are absent.
 
 ## Rendered browser interface
 
@@ -41,12 +41,18 @@ The harness refuses physical devices. Optional SUNWARD_QA_LEGACY_FILE accepts a 
 
 ## APK integrity and limits
 
-Debug, primary/local and protected-signing release builds succeed. Release lint and both APK Signature Scheme v2 verifications pass. Version code **3**, version name **1.2.0**, minimum API 24, target API 35. Both distributed APKs disable debugging. tools/verify_artifacts.py checks every packaged asset exactly matches the source: 108 generated images, 282 voice tracks and three scores. dist/artifact-report.json records byte counts and hashes.
+Debug, primary/local and protected-signing release builds succeed. Release lint and both APK Signature Scheme v2 verifications pass. Version code **4**, version name **1.2.1**, minimum API 24, target API 35. Both distributed APKs disable debugging. tools/verify_artifacts.py checks every packaged asset exactly matches the source: 112 generated images, 282 voice tracks and three scores. dist/artifact-report.json records byte counts and hashes.
 
 Speech synthesis runs only at build time. No speech credential or signing material is included in APKs or source archives. Ads use the actual Google Mobile Ads SDK with demo IDs. Offline QA tests unavailable-ad recovery, not production ad fill. VO is English with complete Indonesian text. Rate explains that Google Play reviews open after publication.
 
 ## Visual review
 
-All 43 new/replacement images were inspected against the canonical model sheet, and rendered gameplay screenshots were reviewed. The full set contains 108 generated raster assets. Rowan's proportions, costume and model remain consistent across emotional poses. Upper human/goblin faces stay obscured; animals and monsters can show their whole faces. Poses vary naturally. Scene art uses containment without zoom or cropping. Icons and sprites preserve transparency.
+The 43 additions/replacements from 1.2 and four new battle assets from 1.2.1 were inspected against the canonical model sheet, and rendered gameplay screenshots were reviewed. The full set contains 112 generated raster assets. Rowan's proportions, costume and model remain consistent across emotional poses. Upper human/goblin faces stay obscured; animals and monsters can show their whole faces. Poses vary naturally. Scene art uses containment without zoom or cropping. Icons and sprites preserve transparency.
 
 Character motion uses a complete generated base image with subtle masked duplicate overlays rather than a skeletal rig. Environmental props are separate generated assets. The app setting and OS reduced-motion preference disable animation. Optional reference sheets scroll; main story screens paginate.
+
+## Presentation iteration in 1.2.1
+
+The repeating decorative bird is removed. Water reflections follow scene-specific paths through painted water; leaves fall infrequently with varied timing. Battles have named numeric enemy HP, a thicker bar, a separate guard value, floating damage and clearer attack/defense/recoil animations. A dedicated generated two-handed parry pose and painted impact/sword/ward assets replace the simple geometric defense effect. Input is locked for each short exchange, and the result is saved before the animation begins. The inventory keeps enlarged text while fitting four complete item cards in the tested 393×797 viewport.
+
+Additional test: node tests/combat-presentation.mjs. Verifies current/max enemy HP and health-bar semantics, damage feedback, duplicate-tap protection, save/resume during a finishing move, silent background transitions, both reduced-motion paths, absence of repeated birds, water-current effects, loaded generated inventory icons and compact inventory. Report: dist/combat-presentation-report.json. Preview images: dist/preview-battle-impact.png, dist/preview-phone-inventory.png and dist/preview-river-current.png.

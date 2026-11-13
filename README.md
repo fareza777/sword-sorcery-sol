@@ -6,19 +6,19 @@ Original story and world. The reference to **7Days by Buff Studio** informed sho
 
 ## Play
 
-Install `dist/sunward-oath-1.2.0.apk` on Android 7.0 or later. Allow installation from the app you use to open the APK. The game is portrait and works offline, including its English character voices. Internet is used only for optional Google test ads and external sharing.
+Install `dist/sunward-oath-1.2.1.apk` on Android 7.0 or later. Allow installation from the app you use to open the APK. The game is portrait and works offline, including its English character voices. Internet is used only for optional Google test ads and external sharing.
 
 - Six complete chapters, 137 story beats, twelve side quests, twelve consequential encounters, seven endings.
 - Exploration across 30 destinations, clues, a usable inventory, investigation, two rune puzzles, water gates, a mirror puzzle, forging, and four tactical duels.
 - Stamina, mana, wounds, recovery, four relationships, persistent choices and chapter checkpoints.
 - Camp conversations, once-per-chapter gathering, four crafting recipes, silver trade, and trusted ally assists.
 - Touchable illustration hotspots, five evidence connections and location-aware inventory actions.
-- Four tactical stances, second-phase feints, observation and prepared peaceful solutions for all four duels.
+- Four tactical stances, second-phase feints, observation and prepared peaceful solutions for all four duels. Named enemy HP, numeric current/max values, a high-contrast health bar, damage feedback and timed combat animation keep each exchange clear.
 - Persistent world changes, returning witnesses, moral tradeoffs and two optional pieces of visible equipment.
-- 108 generated art assets: scene illustrations, four distinct arenas, consistent character expressions, companions, inventory icons and animated environmental props.
-- Animated battle poses, voice-driven mouth movement, subtle hair/cloak/hand motion, birds, leaves, water, a turning wheel, lanterns and optional SFX.
+- 112 generated art assets: scene illustrations, four distinct arenas, consistent character expressions, companions, inventory icons and animated environmental props.
+- Animated battle poses, voice-driven mouth movement, subtle hair/cloak/hand motion, occasional falling leaves, flowing-water reflections, a turning wheel, lanterns and optional SFX.
 - Persistent illustration memories, six world notes and eight milestones, with full-image viewing.
-- Existing version 1.0 and 1.1 saves migrate automatically.
+- Existing version 1.0, 1.1 and 1.2 saves remain compatible.
 - Default English text; complete Indonesian localization; a phone-language option.
 - 282 bundled Deepgram voice tracks with distinct character voices, plus three original ambient scores.
 - Illustrated scenes use `object-fit: contain`: the entire image remains visible.
@@ -38,7 +38,7 @@ npm test
 .\tools\build.ps1
 ```
 
-The primary APK uses the local developer signing identity and disables debugging, so it can update the development installation without losing its save. `sunward-oath-1.2.0-release.apk` uses a separate release signing identity and updates earlier protected-signing release installations. Switching between the two identities requires a fresh installation. `tools/build.ps1` creates that release key **outside** this repository, under `%USERPROFILE%\.codex\signing\sunward-oath`. Its password is encrypted with Windows DPAPI. Back up that directory securely if you want to sign future release updates with the same identity. It is deliberately excluded from source archives. A release build without signing environment variables produces an unsigned release APK.
+The primary APK uses the local developer signing identity and disables debugging, so it can update the development installation without losing its save. `sunward-oath-1.2.1-release.apk` uses a separate release signing identity and updates earlier protected-signing release installations. Switching between the two identities requires a fresh installation. `tools/build.ps1` creates that release key **outside** this repository, under `%USERPROFILE%\.codex\signing\sunward-oath`. Its password is encrypted with Windows DPAPI. Back up that directory securely if you want to sign future release updates with the same identity. It is deliberately excluded from source archives. A release build without signing environment variables produces an unsigned release APK.
 
 ## Browser testing
 
@@ -52,6 +52,7 @@ node tests/voice.mjs
 node tests/battle-ui.mjs
 node tests/adventure-ui.mjs
 node tests/menu-readability.mjs
+node tests/combat-presentation.mjs
 ```
 
 Pure engine tests exercise all seven endings, every required quest, resource and save boundaries, failure/recovery, all encounters, and sixty seeded complete playthroughs (thirty original and thirty expanded). Browser tests play a complete journey through real controls and audit every story beat in both languages at small and normal portrait sizes, with larger text. Reports are written under `dist/`.
@@ -68,11 +69,12 @@ For native offline QA, use a dedicated emulator with the debug APK installed, ai
 | `app/src/main/assets/adventure-data.mjs` | Evidence, stances, equipment, world changes, hotspots and additional story branches |
 | `app/src/main/assets/adventure-ui.mjs` | Evidence board, contextual item use, character presentation and tactics |
 | `app/src/main/assets/adventure.css` | Larger responsive type and presentation animation |
+| `app/src/main/assets/battle-presentation.mjs`, `battle.css` | Numeric enemy HP, damage feedback and timed combat presentation |
 | `app/src/main/assets/effects.mjs` | Optional procedural SFX and presentation animation |
 | `app/src/main/assets/engine.mjs` | Deterministic game rules and strict save validation |
 | `app/src/main/assets/storage.mjs` | Durable Android storage with browser fallback and legacy migration |
 | `app/src/main/assets/app.mjs` | Portrait UI, localization, audio, autosave, settings and tools |
-| `app/src/main/assets/art/` | 108 generated raster art assets with preserved canvases and transparent cutouts |
+| `app/src/main/assets/art/` | 112 generated raster art assets with preserved canvases and transparent cutouts |
 | `app/src/main/assets/audio/` | Offline voice tracks, manifest and original score |
 | `app/src/main/java/com/ashenroad/sunward/MainActivity.java` | Native secure local asset shell, Android sharing and actual AdMob SDK integration |
 | `tools/voice.mjs` | Build-time-only Deepgram synthesis; reads an environment variable |
