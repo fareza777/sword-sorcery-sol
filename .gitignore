@@ -19,3 +19,7 @@ tmp/
 *.log
 
 __pycache__/
+keystore.properties
+
+# Generated store asset working folder (large media, node_modules)
+store/

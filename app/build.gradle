@@ -1,29 +1,36 @@
 plugins { id 'com.android.application' }
+
+def keystorePropsFile = rootProject.file("keystore.properties")
+def keystoreProps = new Properties()
+if (keystorePropsFile.exists()) {
+    keystorePropsFile.withInputStream { keystoreProps.load(it) }
+}
+
 android {
     namespace 'com.ashenroad.sunward'
-    compileSdk 35
+    compileSdk 36
     buildFeatures { buildConfig true }
     signingConfigs {
-        if (System.getenv('SUNWARD_KEYSTORE')) {
+        if (System.getenv('SUNWARD_KEYSTORE') || keystorePropsFile.exists()) {
             localRelease {
-                storeFile file(System.getenv('SUNWARD_KEYSTORE'))
-                storePassword System.getenv('SUNWARD_SIGNING_PASSWORD')
-                keyAlias 'sunward'
-                keyPassword System.getenv('SUNWARD_SIGNING_PASSWORD')
+                storeFile rootProject.file(System.getenv('SUNWARD_KEYSTORE') ?: keystoreProps.getProperty('storeFile'))
+                storePassword System.getenv('SUNWARD_SIGNING_PASSWORD') ?: keystoreProps.getProperty('storePassword')
+                keyAlias System.getenv('SUNWARD_KEY_ALIAS') ?: keystoreProps.getProperty('keyAlias')
+                keyPassword System.getenv('SUNWARD_SIGNING_PASSWORD') ?: keystoreProps.getProperty('keyPassword')
             }
         }
     }
     defaultConfig {
         applicationId 'com.ashenroad.sunward'
         minSdk 24
-        targetSdk 35
-        versionCode 5
-        versionName '1.3.0'
+        targetSdk 36
+        versionCode 6
+        versionName '1.4.0'
     }
     buildTypes {
         release {
             minifyEnabled false
-            if (System.getenv('SUNWARD_KEYSTORE')) signingConfig signingConfigs.localRelease
+            if (System.getenv('SUNWARD_KEYSTORE') || keystorePropsFile.exists()) signingConfig signingConfigs.localRelease
         }
         local {
             initWith release
@@ -35,4 +42,7 @@ android {
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
     lint { abortOnError true }
 }
-dependencies { implementation 'com.google.android.gms:play-services-ads:23.6.0' }
+dependencies {
+    implementation 'com.google.android.gms:play-services-ads:23.6.0'
+    implementation 'com.android.billingclient:billing:8.0.0'
+}
