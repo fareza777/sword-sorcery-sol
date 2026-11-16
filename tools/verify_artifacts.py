@@ -17,7 +17,10 @@ for suffix in ['', '-release']:
   assert bundled==source,'APK assets differ from the source: '+apk.name
   assert sum(name.endswith('.webp') for name in bundled)==expected_art
   assert sum(name.endswith('.mp3') for name in bundled)==expected_voice
-  assert sum(name.endswith('.wav') for name in bundled)==3
+  soundscape=json.loads((base/'audio/soundscape.json').read_text())
+  assert sum(name.endswith('.wav') for name in bundled)==len(soundscape['sfx'])
+  assert sum(name.endswith('.ogg') for name in bundled)==3
+  assert 'branding/f7-intro.mp4' in bundled and 'branding/app-icon.png' in bundled
   assert not any(name.endswith(('.jks','.keystore','.env')) for name in archive.namelist())
  badging=subprocess.check_output([str(sdk/'build-tools/35.0.0/aapt.exe'),'dump','badging',str(apk)],text=True)
  assert "versionName='"+version+"'" in badging and "versionCode='"+expected_code+"'" in badging

@@ -18,5 +18,12 @@ test('animated character layers contain genuine WebP alpha transparency',()=>{
  }
 });
 test('all three original music themes are bundled complete for offline playback',()=>{
- for(const key of ['briarwick-morning','river-lanterns','keepers-of-light']){const b=fs.readFileSync(path+'audio/'+key+'.wav');assert.equal(b.toString('ascii',8,12),'WAVE');assert.equal(b.readUInt32LE(24),22050);assert.equal(b.readUInt32LE(40)/b.readUInt32LE(28),64);}
+ const report=JSON.parse(fs.readFileSync(path+'audio/soundscape.json'));assert.equal(report.sampleRate,44100);assert.equal(report.channels,2);
+ for(const key of ['briarwick-morning','river-lanterns','keepers-of-light']){const item=report.music[key],b=fs.readFileSync(path+item.file);assert.equal(b.toString('ascii',0,4),'OggS');assert.equal(item.seconds,64);assert.ok(item.peakDb<-7&&item.rmsDb<-22);assert.ok(item.loopJoin<.015);}
+});
+
+test('sixteen shaped stereo sound effects and the official silent ident ship offline',()=>{
+ const report=JSON.parse(fs.readFileSync(path+'audio/soundscape.json'));assert.equal(Object.keys(report.sfx).length,16);
+ for(const item of Object.values(report.sfx)){const b=fs.readFileSync(path+item.file);assert.equal(b.toString('ascii',8,12),'WAVE');assert.equal(b.readUInt16LE(22),2);assert.equal(b.readUInt32LE(24),44100);assert.ok(item.seconds<=2&&item.peakDb<-6);}
+ assert.ok(fs.statSync(path+'branding/f7-intro.mp4').size>200000);assert.ok(fs.statSync(path+'branding/launcher-foreground.png').size>100000);
 });

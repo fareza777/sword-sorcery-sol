@@ -1,0 +1,146 @@
+{
+  "serial": "emulator-5580",
+  "androidAPI": 35,
+  "airplaneMode": true,
+  "intro": {
+    "stages": [
+      "title",
+      "developer",
+      "home"
+    ],
+    "videoTime": 4,
+    "muted": true,
+    "events": [
+      [
+        "loadedmetadata",
+        0,
+        null
+      ],
+      [
+        "playing",
+        0.049182,
+        null
+      ],
+      [
+        "timeupdate",
+        0.04928,
+        null
+      ],
+      [
+        "timeupdate",
+        0.179677,
+        null
+      ],
+      [
+        "playing",
+        0.180196,
+        null
+      ],
+      [
+        "timeupdate",
+        0.416603,
+        null
+      ],
+      [
+        "timeupdate",
+        0.681965,
+        null
+      ],
+      [
+        "timeupdate",
+        0.948017,
+        null
+      ],
+      [
+        "timeupdate",
+        1.215196,
+        null
+      ],
+      [
+        "timeupdate",
+        1.481643,
+        null
+      ],
+      [
+        "timeupdate",
+        1.744491,
+        null
+      ],
+      [
+        "timeupdate",
+        2.008945,
+        null
+      ],
+      [
+        "timeupdate",
+        2.28161,
+        null
+      ],
+      [
+        "timeupdate",
+        2.540897,
+        null
+      ],
+      [
+        "timeupdate",
+        2.810635,
+        null
+      ],
+      [
+        "timeupdate",
+        3.084808,
+        null
+      ],
+      [
+        "timeupdate",
+        3.337902,
+        null
+      ],
+      [
+        "timeupdate",
+        3.608611,
+        null
+      ],
+      [
+        "timeupdate",
+        3.87721,
+        null
+      ],
+      [
+        "timeupdate",
+        4,
+        null
+      ],
+      [
+        "ended",
+        0,
+        null
+      ],
+      [
+        "timeupdate",
+        0,
+        null
+      ]
+    ],
+    "videoDuration": 4
+  },
+  "saveUnchanged": true,
+  "range": {
+    "status": 206,
+    "length": 100,
+    "type": "audio/ogg"
+  },
+  "music": {
+    "duration": 64,
+    "time": 1.193206,
+    "src": "audio/music/briarwick-morning.ogg",
+    "seekAndLoop": true
+  },
+  "effect": {
+    "channels": 2,
+    "rate": 48000,
+    "duration": 0.65,
+    "state": "running"
+  },
+  "nativePause": true
+}

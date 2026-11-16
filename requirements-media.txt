@@ -1,0 +1,6 @@
+# Optional dependencies to reproduce icon exports and synthesized music/SFX.
+# ffmpeg with libvorbis must also be available in PATH.
+Pillow>=10
+numpy>=1.26
+scipy>=1.12
+soundfile>=0.12

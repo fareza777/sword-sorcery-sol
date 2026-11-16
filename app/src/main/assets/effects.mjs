@@ -11,18 +11,7 @@ const WATER_PATHS={
  herbal_spring:['M19 77 C35 72 49 79 65 74','M43 89 C58 84 72 89 83 85']
 };
 // Presentation effects never change game rules, crop illustrations, or require a network.
-let context;
-const sounds={tap:[620,.035,'sine'],page:[470,.06,'sine'],clue:[780,.16,'sine'],rune:[660,.24,'sine'],wrong:[190,.18,'triangle'],heal:[520,.24,'sine'],craft:[840,.18,'triangle'],guard:[180,.12,'triangle'],strike:[270,.12,'sawtooth'],dodge:[410,.08,'sine'],ward:[740,.25,'sine'],ally:[880,.28,'sine'],win:[990,.3,'sine']};
-export function sound(name,prefs={}){
- if(prefs.sfx===false)return;
- try{
-  const Audio=globalThis.AudioContext||globalThis.webkitAudioContext;if(!Audio)return;context??=new Audio();if(context.state==='suspended')context.resume().catch(()=>{});
-  const [frequency,duration,type]=sounds[name]||sounds.tap,t=context.currentTime,gain=context.createGain(),osc=context.createOscillator();
-  gain.gain.setValueAtTime(0,t);gain.gain.linearRampToValueAtTime(name==='tap'?.025:.045,t+.01);gain.gain.exponentialRampToValueAtTime(.001,t+duration);
-  osc.type=type;osc.frequency.setValueAtTime(frequency,t);osc.frequency.exponentialRampToValueAtTime(frequency*(name==='wrong'?.55:1.4),t+duration);osc.connect(gain);gain.connect(context.destination);osc.start(t);osc.stop(t+duration+.02);
- }catch{}
-}
-export function pauseEffects(){context?.suspend().catch(()=>{});}
+export {sound,pauseEffects} from './audio-engine.mjs';
 export function decorateScene(prefs,art=''){
  for(const o of worldObservers)o.disconnect();worldObservers=[];
  if(prefs.motion===false)return;

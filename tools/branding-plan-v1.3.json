@@ -1,0 +1,7 @@
+{
+  "mode": "built-in ImageGen",
+  "version": "1.3.0",
+  "asset": "branding/launcher-foreground.png",
+  "prompt": "Create a premium original Android game launcher emblem for SUNWARD OATH, a bright illustrated sword-and-sorcery adventure. A single bold upright silver-and-gold sword with a beautifully crafted sun-shaped gold guard and a small faceted amber sun behind its upper blade, framed by two restrained teal-and-gold laurel leaf sprigs and one flowing teal ribbon. Strong memorable silhouette, exquisite warm gold metal, painterly gouache plus precise fine-ink edges, refined high-end illustrated fantasy RPG identity, clearly readable at 48 pixels. NO text, letters, people, faces, scenery, ground, border, outer app tile, excessive sparkles or small clutter. TRUE TRANSPARENT alpha background. Square 1:1. Keep the ENTIRE emblem compact and centered inside the middle 60 percent of the canvas (20 percent empty transparent margins on every side), so Android circle/squircle masks never clip the blade or leaves. The art will be displayed over a solid rich emerald background #174F44; make the sword and sun light, luminous and warm, with confident clean contours.",
+  "android_exports": "native density variants, adaptive masks, legacy icon and store icon preserve the full generated emblem"
+}

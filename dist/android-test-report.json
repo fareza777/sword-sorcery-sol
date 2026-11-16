@@ -5,7 +5,7 @@
   "offlineVoice": {
     "src": "https://appassets.androidplatform.net/audio/intro-0.mp3",
     "duration": 3.744,
-    "time": 0.130035
+    "time": 0.145864
   },
   "coldRestartSave": true,
   "puzzle": true,
@@ -32,19 +32,19 @@
   "crafting": true,
   "ally": true,
   "info": {
-    "width": 393,
-    "height": 778,
+    "width": 412,
+    "height": 842,
     "bridge": true,
     "phoneLanguage": "en",
     "fonts": "loaded",
     "endingGallery": [
+      "beacon",
       "council",
       "free",
       "crown",
       "king",
       "home",
-      "river",
-      "beacon"
+      "river"
     ]
   }
 }

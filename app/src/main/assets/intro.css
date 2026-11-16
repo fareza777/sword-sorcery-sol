@@ -1,0 +1,21 @@
+.intro{position:relative;width:100%;height:100dvh;min-height:0;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 24px 80px;box-sizing:border-box}
+.intro-title{background:radial-gradient(ellipse at 50% 37%,#fff9dc 0%,#f6f1e7 60%);color:#174f44}
+.intro-title-art{height:min(39dvh,330px);width:min(70vw,300px);margin-bottom:20px;filter:drop-shadow(0 8px 15px #80682a22);animation:intro-arrive .8s ease-out both}
+.intro-title-art img{width:100%;height:100%;object-fit:contain}
+.intro-title-copy{text-align:center;animation:intro-arrive 1s ease-out both}
+.intro-title h1{font-family:var(--serif);font-size:clamp(35px,10vw,52px);font-weight:700;line-height:1.05;letter-spacing:.045em;margin:16px 0}
+.intro-title h1 span{display:block;font-size:1.3em;letter-spacing:.12em;padding-left:.12em;color:#a57425}
+.intro-kicker{font:800 15px var(--sans);letter-spacing:.09em}
+.intro-title p{font:600 18px var(--sans);margin:0}
+.intro-skip{position:absolute;bottom:max(26px,env(safe-area-inset-bottom));right:24px;min-height:48px;min-width:100px;padding:10px 18px;border:1px solid currentColor;border-radius:24px;color:inherit;background:transparent;font:800 17px var(--sans);z-index:2;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:12px}
+.intro-skip:focus-visible{outline:3px solid #d5a83b;outline-offset:4px}
+.intro-brand{padding:0;background:#07060c;color:#f6edda}
+.intro-brand-media{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.intro-brand-media video,.intro-brand-media img{width:100%;height:100%;object-fit:contain}
+.intro-brand .intro-skip{background:#07060cc9}
+.brand img,.row>img[src^="branding/"]{object-fit:contain;border-radius:8px}
+@keyframes intro-arrive{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.intro *{animation:none!important}}
+.reduce .intro *{animation:none!important}
+.volume-row input[type=range]{width:42%;min-height:44px;accent-color:#246659}
+@media(max-height:620px){.intro-title-art{height:29dvh;margin-bottom:12px}.intro-title h1{margin:10px 0;font-size:32px}.intro-title p{font-size:17px}}

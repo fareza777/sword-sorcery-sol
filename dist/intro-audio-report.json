@@ -1,0 +1,18 @@
+{
+  "orderedSplashes": [
+    "Sunward Oath",
+    "F7 Developer"
+  ],
+  "officialVideoPlays": true,
+  "silentStartup": true,
+  "skip": true,
+  "videoErrorFallback": true,
+  "reducedMotionPoster": true,
+  "layouts": 16,
+  "offlineMusicDecoded": true,
+  "ducking": true,
+  "volumePersisted": true,
+  "sampledEffects": true,
+  "muteAndBackground": true,
+  "errors": []
+}

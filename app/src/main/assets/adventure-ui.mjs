@@ -4,7 +4,7 @@ import {EVIDENCE_LINKS,knownCards,HOTSPOTS,ARENAS,GEAR,STANCES,sceneArt,moodFor,
 export function textChunks(text,limit=118){const words=String(text).split(/\s+/),parts=[];let part='';for(const word of words){if(part&&part.length+word.length+1>limit){parts.push(part);part=''}part+=(part?' ':'')+word}if(part)parts.push(part);return parts.length?parts:[''];}
 export function createAdventure(ui){
  const {L,tr,ico,img,button,sheet,toast}=ui,esc=ui.escape,s=()=>ui.getState();let selected=[],cardPage=0,help=true,viewScene='',observer,lastRef,lastInventory={};
- const battle=createBattlePresentation({L,ico,getPrefs:ui.getPrefs});
+ const battle=createBattlePresentation({L,ico,getPrefs:ui.getPrefs,sound:ui.sound});
  function itemIcon(key,cls=''){const gear=Object.values(GEAR).find(g=>g.item===key),id=gear?.art||'item_'+key;return ART[id]?img(id,'generated-item '+cls):ico(ITEMS[key]?.icon||'bag');}
  function evidence(message=''){
   const cards=knownCards(s()),pages=Math.max(1,Math.ceil(cards.length/4));cardPage=Math.min(cardPage,pages-1);

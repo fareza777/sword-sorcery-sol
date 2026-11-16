@@ -1,8 +1,8 @@
 [
   {
-    "file": "sunward-oath-1.2.1.apk",
-    "bytes": 81096014,
-    "sha256": "3790512d1d04e9c871c059da5d2573cdb733f260db0c31c4452f447763fb830d",
+    "file": "sunward-oath-1.3.0.apk",
+    "bytes": 77524635,
+    "sha256": "976e83bd2acb843b9b5d590bafb6e541f14838383e35a168ff2b226f68868c3f",
     "assetsMatchSource": true,
     "debuggable": false,
     "artAssets": 112,
@@ -10,9 +10,9 @@
     "offlineScores": 3
   },
   {
-    "file": "sunward-oath-1.2.1-release.apk",
-    "bytes": 81096010,
-    "sha256": "f557ed28bb7b27e3b778b0260072d1ffcb2d7ca53f9a4b53f2ad26185dd03f2f",
+    "file": "sunward-oath-1.3.0-release.apk",
+    "bytes": 77524635,
+    "sha256": "badf88f3bf1c329d39edf9756f99db613fa9ffc46068d9bc794580a24da4a669",
     "assetsMatchSource": true,
     "debuggable": false,
     "artAssets": 112,

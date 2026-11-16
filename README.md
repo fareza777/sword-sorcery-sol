@@ -6,7 +6,7 @@ Original story and world. The reference to **7Days by Buff Studio** informed sho
 
 ## Play
 
-Install `dist/sunward-oath-1.2.1.apk` on Android 7.0 or later. Allow installation from the app you use to open the APK. The game is portrait and works offline, including its English character voices. Internet is used only for optional Google test ads and external sharing.
+Install `dist/sunward-oath-1.3.0.apk` on Android 7.0 or later. Allow installation from the app you use to open the APK. The game is portrait and works offline, including its English character voices. Internet is used only for optional Google test ads and external sharing.
 
 - Six complete chapters, 137 story beats, twelve side quests, twelve consequential encounters, seven endings.
 - Exploration across 30 destinations, clues, a usable inventory, investigation, two rune puzzles, water gates, a mirror puzzle, forging, and four tactical duels.
@@ -23,6 +23,8 @@ Install `dist/sunward-oath-1.2.1.apk` on Android 7.0 or later. Allow installatio
 - 282 bundled Deepgram voice tracks with distinct character voices, plus three original ambient scores.
 - Illustrated scenes use `object-fit: contain`: the entire image remains visible.
 - Larger default text: 19–20px dialogue and at least 15px visible labels, with an additional larger-text option. Dialogue, choices and map destinations paginate to fit portrait screens. Optional sheets can scroll.
+- New illustrated adaptive launcher icon; game-title splash followed by the official skippable F7 Developer ident.
+- Three gentle stereo offline scores, sixteen designed SFX, music/effect volume controls and voice ducking. No crackle or waterfall ambience.
 - Splash, onboarding, New Journey, Continue, dual autosave, settings, journal, ending gallery, about, share and rate entry point. Android commits autosaves directly to private native storage before reporting success, retaining a WebView copy and migrating older saves.
 
 The rating entry point explains that Google Play reviews will open after publication. This repository is not a published Play Store listing. Ads intentionally use Google's demo app/unit IDs, as requested.
@@ -38,7 +40,7 @@ npm test
 .\tools\build.ps1
 ```
 
-The primary APK uses the local developer signing identity and disables debugging, so it can update the development installation without losing its save. `sunward-oath-1.2.1-release.apk` uses a separate release signing identity and updates earlier protected-signing release installations. Switching between the two identities requires a fresh installation. `tools/build.ps1` creates that release key **outside** this repository, under `%USERPROFILE%\.codex\signing\sunward-oath`. Its password is encrypted with Windows DPAPI. Back up that directory securely if you want to sign future release updates with the same identity. It is deliberately excluded from source archives. A release build without signing environment variables produces an unsigned release APK.
+The primary APK uses the local developer signing identity and disables debugging, so it can update the development installation without losing its save. `sunward-oath-1.3.0-release.apk` uses a separate release signing identity and updates earlier protected-signing release installations. Switching between the two identities requires a fresh installation. `tools/build.ps1` creates that release key **outside** this repository, under `%USERPROFILE%\.codex\signing\sunward-oath`. Its password is encrypted with Windows DPAPI. Back up that directory securely if you want to sign future release updates with the same identity. It is deliberately excluded from source archives. A release build without signing environment variables produces an unsigned release APK.
 
 ## Browser testing
 
@@ -53,6 +55,7 @@ node tests/battle-ui.mjs
 node tests/adventure-ui.mjs
 node tests/menu-readability.mjs
 node tests/combat-presentation.mjs
+node tests/intro-audio.mjs
 ```
 
 Pure engine tests exercise all seven endings, every required quest, resource and save boundaries, failure/recovery, all encounters, and sixty seeded complete playthroughs (thirty original and thirty expanded). Browser tests play a complete journey through real controls and audit every story beat in both languages at small and normal portrait sizes, with larger text. Reports are written under `dist/`.
@@ -105,3 +108,5 @@ Before a public store launch, configure your own app listing, production ad IDs,
 ## Credits and licenses
 
 Story, code, scene compositions and score were created for this project with AI assistance. Painterly assets were generated for this game. Deepgram Aura synthesizes the voices. Literata and Nunito are bundled with their SIL Open Font License notices. Third-party Android dependencies retain their respective licenses. See `LICENSE` and `docs/ART-DIRECTION.md`.
+
+Branding, audio provenance and optional reproduction: [docs/BRANDING-AUDIO.md](docs/BRANDING-AUDIO.md).

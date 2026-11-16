@@ -1,0 +1,17 @@
+{
+  "launcher": {
+    "mode": "built-in ImageGen",
+    "prompt": "tools/branding-plan-v1.3.json",
+    "generatedMaster": "exec-cd917ec1-f923-490f-936c-e98467a51968.png"
+  },
+  "f7": {
+    "source": "User-provided F7 Brand / Splash Screen Video / App-Ready (silent portrait) and Extras & Source (final-frame portrait)",
+    "durationSeconds": 4,
+    "modified": false
+  },
+  "sha256": {
+    "launcher-foreground.png": "f6cdc1c97a1a281771a5552a750fe44acac09bbeb5c449464e76e7af2aa937aa",
+    "f7-intro.mp4": "fc483bb139b1e683390f9df0ae631c9e70a526560494a4a8d006fbf0f217d635",
+    "f7-poster.png": "105588ecc7eff729f4e1ca8fe7417bd4c8a791d7597e9565c1dd173a648a7659"
+  }
+}

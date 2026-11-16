@@ -1,7 +1,7 @@
 import ART from './art.mjs';
 const NAMES={brambleback:['Brambleback','Brambleback'],sentinel:['Stone Sentinel','Penjaga Batu'],captain:['Captain Varric','Kapten Varric'],guardian:['Crown Guardian','Penjaga Mahkota']};
 
-export function createBattlePresentation({L,ico,getPrefs}){
+export function createBattlePresentation({L,ico,getPrefs,sound=()=>{}}){
  function name(enemy){return L(...NAMES[enemy]);}
  function hud(state,node){
   const d=state.duel,percent=d.hp/d.maxHp*100;
@@ -19,7 +19,8 @@ export function createBattlePresentation({L,ico,getPrefs}){
    if(fill)fill.style.width=hp/maxHp*100+'%';
    if(trail){if(motion)setTimeout(()=>{trail.style.width=hp/maxHp*100+'%';},90);else trail.style.width=hp/maxHp*100+'%';}
   };
-  if(!motion){updateHUD();return 0;}
+  const contactSound=()=>{if(document.hidden)return;if(move==='guard'&&damage)sound('parry');else if(move==='ward')sound('ward-hit');else if(damage||hit)sound('impact');if(result==='win')setTimeout(()=>{if(!document.hidden)sound('win')},160);};
+  if(!motion){updateHUD();contactSound();return 0;}
   const duration=Math.max({guard:900,ward:1000,strike:850,dodge:750}[move]||850,result==='continue'?0:1000),contact=move==='ward'?300:220;
   stage.dataset.pose=move;stage.dataset.resolving='true';
   if(result==='win')stage.dataset.finished='true';if(hit)stage.dataset.hit='true';
@@ -28,7 +29,7 @@ export function createBattlePresentation({L,ico,getPrefs}){
   effect.innerHTML=`${damage?`<span class="combat-number enemy-damage">−${damage} HP</span>`:''}${hit?`<span class="combat-number guard-damage">−${hit} ${L('guard','pertahanan')}</span>`:''}${move==='strike'?fx('fx_sword_arc','combat-slash-art')+fx('fx_metal_sparks','combat-hit-art'):''}${move==='ward'?fx('fx_sun_guard','combat-aegis'):''}${move==='guard'&&damage?fx('fx_metal_sparks','combat-parry-art')+'<i class="parry-glint"></i>':''}`;
   frame.append(effect);
   setTimeout(()=>{
-   updateHUD();const announcement=document.createElement('span');announcement.className='combat-announcement';announcement.setAttribute('role','status');announcement.textContent=L(`Enemy HP ${hp}/${maxHp}. Your guard ${guard}/3.`,`HP musuh ${hp}/${maxHp}. Pertahananmu ${guard}/3.`);frame.append(announcement);
+   updateHUD();contactSound();const announcement=document.createElement('span');announcement.className='combat-announcement';announcement.setAttribute('role','status');announcement.textContent=L(`Enemy HP ${hp}/${maxHp}. Your guard ${guard}/3.`,`HP musuh ${hp}/${maxHp}. Pertahananmu ${guard}/3.`);frame.append(announcement);
   },contact);
   return duration;
  }
